@@ -1,0 +1,10 @@
+
+###> symfony/framework-bundle ###
+/SmartLiving/.env.local
+/SmartLiving/.env.local.php
+/SmartLiving/.env.*.local
+/SmartLiving/config/secrets/prod/prod.decrypt.private.php
+/SmartLiving/public/bundles/
+/SmartLiving/var/
+/SmartLiving/vendor/
+###< symfony/framework-bundle ###
