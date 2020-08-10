@@ -7,4 +7,5 @@
 /SmartLiving/public/bundles/
 /SmartLiving/var/
 /SmartLiving/vendor/
+/SmartLiving/.idea/
 ###< symfony/framework-bundle ###
