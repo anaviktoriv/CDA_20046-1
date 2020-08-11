@@ -7,4 +7,19 @@
 /SmartLiving/public/bundles/
 /SmartLiving/var/
 /SmartLiving/vendor/
+/SmartLiving/.idea/
+SmartLiving/.env
+SmartLiving/.idea/SmartLiving.iml
+SmartLiving/.idea/php.xml
+SmartLiving/.idea/vcs.xml
+SmartLiving/.idea/workspace.xml
+
+# Default ignored files
+SmartLiving/shelf/
+SmartLiving/workspace.xml
+# Datasource local storage ignored files
+SmartLiving/dataSources/
+SmartLiving/dataSources.local.xml
+# Editor-based HTTP Client requests
+SmartLiving/httpRequests/
 ###< symfony/framework-bundle ###
