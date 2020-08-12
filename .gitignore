@@ -7,12 +7,13 @@
 /SmartLiving/public/bundles/
 /SmartLiving/var/
 /SmartLiving/vendor/
-/SmartLiving/.idea/
+SmartLiving/.idea/
 SmartLiving/.env
 SmartLiving/.idea/SmartLiving.iml
 SmartLiving/.idea/php.xml
 SmartLiving/.idea/vcs.xml
 SmartLiving/.idea/workspace.xml
+.idea/
 
 # Default ignored files
 SmartLiving/shelf/

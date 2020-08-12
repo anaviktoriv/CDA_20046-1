@@ -32,7 +32,7 @@ class TestController extends AbstractController {
             ->setLastName('Doe')
             ->setPhone('+55555555')
             ->setAddress('123 Main St')
-            ->setStatus('bla');
+            ->setStatus('salesperson');
 
         $em->persist($employee);
         $em->flush();
