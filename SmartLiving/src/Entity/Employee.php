@@ -47,6 +47,11 @@ class Employee
      */
     private $status;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="employee", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,6 +116,24 @@ class Employee
             throw new \InvalidArgumentException('Invalid employee status.');
         }
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newEmployee = null === $user ? null : $this;
+        if ($user->getEmployee() !== $newEmployee) {
+            $user->setEmployee($newEmployee);
+        }
 
         return $this;
     }

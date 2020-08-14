@@ -39,6 +39,11 @@ class User implements UserInterface
      */
     private $registration_date;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Employee::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $employee;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +130,18 @@ class User implements UserInterface
     public function setRegistrationDate(\DateTimeInterface $registration_date): self
     {
         $this->registration_date = $registration_date;
+
+        return $this;
+    }
+
+    public function getEmployee(): ?Employee
+    {
+        return $this->employee;
+    }
+
+    public function setEmployee(?Employee $employee): self
+    {
+        $this->employee = $employee;
 
         return $this;
     }
