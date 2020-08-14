@@ -48,10 +48,27 @@ class Product
      */
     private $reviews;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->reviews = new ArrayCollection();
+        $this->orderDetails = new ArrayCollection();
     }
+        /**
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="product")
+     */
+    private $orderDetails;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Supplier::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $supplier;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
 
     public function getId(): ?int
     {
@@ -118,18 +135,32 @@ class Product
         return $this->reviews;
     }
 
-    public function addReview(Review $review): self
-    {
+    public function addReview(Review $review): self {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
             $review->setProduct($this);
+        }
+    }
+
+        /**
+     * @return Collection|OrderDetails[]
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails[] = $orderDetail;
+            $orderDetail->setProduct($this);
         }
 
         return $this;
     }
 
-    public function removeReview(Review $review): self
-    {
+    public function removeReview(Review $review): self {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
             // set the owning side to null (unless already changed)
@@ -137,6 +168,42 @@ class Product
                 $review->setProduct(null);
             }
         }
+        return $this;
+    }
+
+    public function removeOrderDetail(OrderDetails $orderDetail): self
+    {
+        if ($this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails->removeElement($orderDetail);
+            // set the owning side to null (unless already changed)
+            if ($orderDetail->getProduct() === $this) {
+                $orderDetail->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSupplier(): ?Supplier
+    {
+        return $this->supplier;
+    }
+
+    public function setSupplier(?Supplier $supplier): self
+    {
+        $this->supplier = $supplier;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

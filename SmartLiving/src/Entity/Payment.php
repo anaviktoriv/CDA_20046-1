@@ -22,6 +22,12 @@ class Payment
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="payments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $oder_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Payment
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getOderId(): ?Order
+    {
+        return $this->oder_id;
+    }
+
+    public function setOderId(?Order $oder_id): self
+    {
+        $this->oder_id = $oder_id;
 
         return $this;
     }

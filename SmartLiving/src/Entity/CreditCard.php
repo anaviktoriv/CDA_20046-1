@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CreditCardRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class CreditCard
      * @ORM\Column(type="datetime")
      */
     private $expirationDate;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="creditCard")
+     */
+    private $customers;
+
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,34 @@ class CreditCard
     public function setExpirationDate(\DateTimeInterface $expirationDate): self
     {
         $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Customer[]
+     */
+    public function getCustomers(): Collection
+    {
+        return $this->customers;
+    }
+
+    public function addCustomer(Customer $customer): self
+    {
+        if (!$this->customers->contains($customer)) {
+            $this->customers[] = $customer;
+            $customer->addCreditCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCustomer(Customer $customer): self
+    {
+        if ($this->customers->contains($customer)) {
+            $this->customers->removeElement($customer);
+            $customer->removeCreditCard($this);
+        }
 
         return $this;
     }

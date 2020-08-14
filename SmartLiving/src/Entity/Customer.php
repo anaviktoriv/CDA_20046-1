@@ -71,10 +71,20 @@ class Customer
      */
     private $status;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->reviews = new ArrayCollection();
+        $this->creditCard = new ArrayCollection();
     }
+        /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="customer", cascade={"persist", "remove"})
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=CreditCard::class, inversedBy="customers")
+     */
+    private $creditCard;
+
 
     public function getId(): ?int
     {
@@ -183,14 +193,29 @@ class Customer
         return $this;
     }
 
-    public function removeReview(Review $review): self
-    {
+    public function removeReview(Review $review): self {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
             // set the owning side to null (unless already changed)
             if ($review->getCustomer() === $this) {
                 $review->setCustomer(null);
             }
+        }
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newCustomer = null === $user ? null : $this;
+        if ($user->getCustomer() !== $newCustomer) {
+            $user->setCustomer($newCustomer);
         }
 
         return $this;
@@ -201,9 +226,23 @@ class Customer
         return $this->company;
     }
 
-    public function setCompany(?Company $company): self
-    {
+    public function setCompany(?Company $company): self {
         $this->company = $company;
+        return $this;
+    }
+    /**
+     * @return Collection|CreditCard[]
+     */
+    public function getCreditCard(): Collection
+    {
+        return $this->creditCard;
+    }
+
+    public function addCreditCard(CreditCard $creditCard): self
+    {
+        if (!$this->creditCard->contains($creditCard)) {
+            $this->creditCard[] = $creditCard;
+        }
 
         return $this;
     }
@@ -213,9 +252,16 @@ class Customer
         return $this->status;
     }
 
-    public function setStatus(?Status $status): self
-    {
+    public function setStatus(?Status $status): self {
         $this->status = $status;
+        return $this;
+    }
+
+    public function removeCreditCard(CreditCard $creditCard): self
+    {
+        if ($this->creditCard->contains($creditCard)) {
+            $this->creditCard->removeElement($creditCard);
+        }
 
         return $this;
     }

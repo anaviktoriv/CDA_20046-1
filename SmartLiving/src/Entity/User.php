@@ -43,6 +43,10 @@ class User implements UserInterface
      * @ORM\OneToOne(targetEntity=Employee::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $employee;
+     /**
+     * @ORM\OneToOne(targetEntity=Customer::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $customer;
 
     public function getId(): ?int
     {
@@ -139,9 +143,19 @@ class User implements UserInterface
         return $this->employee;
     }
 
-    public function setEmployee(?Employee $employee): self
-    {
+    public function setEmployee(?Employee $employee): self {
         $this->employee = $employee;
+        return $this;
+    }
+
+    public function getCustomer(): ?Customer
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(?Customer $customer): self
+    {
+        $this->customer = $customer;
 
         return $this;
     }
