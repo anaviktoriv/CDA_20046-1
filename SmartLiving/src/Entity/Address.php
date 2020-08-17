@@ -50,7 +50,7 @@ class Address
     private $fullName;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=false)
      */
     private $isDefault;
 
