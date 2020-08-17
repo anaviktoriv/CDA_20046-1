@@ -69,6 +69,31 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $unitPrice;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $stock;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $restockDate;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $stockMin;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateAdded;
+
 
     public function getId(): ?int
     {
@@ -204,6 +229,66 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUnitPrice(): ?string
+    {
+        return $this->unitPrice;
+    }
+
+    public function setUnitPrice(string $unitPrice): self
+    {
+        $this->unitPrice = $unitPrice;
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): self
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getRestockDate(): ?\DateTimeInterface
+    {
+        return $this->restockDate;
+    }
+
+    public function setRestockDate(\DateTimeInterface $restockDate): self
+    {
+        $this->restockDate = $restockDate;
+
+        return $this;
+    }
+
+    public function getStockMin(): ?int
+    {
+        return $this->stockMin;
+    }
+
+    public function setStockMin(int $stockMin): self
+    {
+        $this->stockMin = $stockMin;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(\DateTimeInterface $dateAdded): self
+    {
+        $this->dateAdded = $dateAdded;
 
         return $this;
     }
