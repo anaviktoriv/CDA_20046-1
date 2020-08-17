@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,16 +18,6 @@ class Address
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -42,33 +34,46 @@ class Address
      */
     private $city;
 
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $country;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="address")
+     */
+    private $customers;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fullName;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDefault;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Payment::class, mappedBy="address")
+     */
+    private $payments;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Shipping::class, mappedBy="address")
+     */
+    private $shippings;
+
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+        $this->payments = new ArrayCollection();
+        $this->shippings = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
     }
 
     public function getAddress(): ?string
@@ -103,6 +108,132 @@ class Address
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Customer[]
+     */
+    public function getCustomers(): Collection
+    {
+        return $this->customers;
+    }
+
+    public function addCustomer(Customer $customer): self
+    {
+        if (!$this->customers->contains($customer)) {
+            $this->customers[] = $customer;
+            $customer->addAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCustomer(Customer $customer): self
+    {
+        if ($this->customers->contains($customer)) {
+            $this->customers->removeElement($customer);
+            $customer->removeAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
+    }
+
+    public function setFullName(?string $fullName): self
+    {
+        $this->fullName = $fullName;
+
+        return $this;
+    }
+
+    public function getIsDefault(): ?bool
+    {
+        return $this->isDefault;
+    }
+
+    public function setIsDefault(bool $isDefault): self
+    {
+        $this->isDefault = $isDefault;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Payment[]
+     */
+    public function getPayments(): Collection
+    {
+        return $this->payments;
+    }
+
+    public function addPayment(Payment $payment): self
+    {
+        if (!$this->payments->contains($payment)) {
+            $this->payments[] = $payment;
+            $payment->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removePayment(Payment $payment): self
+    {
+        if ($this->payments->contains($payment)) {
+            $this->payments->removeElement($payment);
+            // set the owning side to null (unless already changed)
+            if ($payment->getAddress() === $this) {
+                $payment->setAddress(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Shipping[]
+     */
+    public function getShippings(): Collection
+    {
+        return $this->shippings;
+    }
+
+    public function addShipping(Shipping $shipping): self
+    {
+        if (!$this->shippings->contains($shipping)) {
+            $this->shippings[] = $shipping;
+            $shipping->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShipping(Shipping $shipping): self
+    {
+        if ($this->shippings->contains($shipping)) {
+            $this->shippings->removeElement($shipping);
+            // set the owning side to null (unless already changed)
+            if ($shipping->getAddress() === $this) {
+                $shipping->setAddress(null);
+            }
+        }
 
         return $this;
     }

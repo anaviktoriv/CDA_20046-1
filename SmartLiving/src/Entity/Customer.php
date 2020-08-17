@@ -30,26 +30,6 @@ class Customer
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     */
-    private $country;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $address;
-
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $zipCode;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $city;
-
-    /**
      * @ORM\Column(type="string", length=15)
      */
     private $phone;
@@ -74,6 +54,7 @@ class Customer
     public function __construct() {
         $this->reviews = new ArrayCollection();
         $this->creditCard = new ArrayCollection();
+        $this->address = new ArrayCollection();
     }
         /**
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="customer", cascade={"persist", "remove"})
@@ -84,6 +65,11 @@ class Customer
      * @ORM\ManyToMany(targetEntity=CreditCard::class, inversedBy="customers")
      */
     private $creditCard;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Address::class, inversedBy="customers")
+     */
+    private $addresses;
 
 
     public function getId(): ?int
@@ -111,54 +97,6 @@ class Customer
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    public function getZipCode(): ?string
-    {
-        return $this->zipCode;
-    }
-
-    public function setZipCode(string $zipCode): self
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
 
         return $this;
     }
@@ -261,6 +199,32 @@ class Customer
     {
         if ($this->creditCard->contains($creditCard)) {
             $this->creditCard->removeElement($creditCard);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Address[]
+     */
+    public function getAddress(): Collection
+    {
+        return $this->address;
+    }
+
+    public function addAddress(Address $addresses): self
+    {
+        if (!$this->addresses->contains($addresses)) {
+            $this->addresses[] = $addresses;
+        }
+
+        return $this;
+    }
+
+    public function removeAddress(Address $addresses): self
+    {
+        if ($this->addresses->contains($addresses)) {
+            $this->addresses->removeElement($addresses);
         }
 
         return $this;

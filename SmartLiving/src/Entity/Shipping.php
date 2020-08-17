@@ -33,6 +33,12 @@ class Shipping
      */
     private $order_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="shippings")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +76,18 @@ class Shipping
     public function setOrderId(?Order $order_id): self
     {
         $this->order_id = $order_id;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }

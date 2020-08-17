@@ -28,6 +28,12 @@ class Payment
      */
     private $oder_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="payments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +59,18 @@ class Payment
     public function setOderId(?Order $oder_id): self
     {
         $this->oder_id = $oder_id;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
