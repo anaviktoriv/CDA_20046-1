@@ -1,7 +1,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"> {% if is_mobile() == true %}
-            <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt=""> {{ is_mobile()}} </a>
+        <a class="navbar-brand" href="#">
+            {% if is_mobile() == true %}
+            <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt=""> {{ is_mobile()}}
         {% else %}
         <img src=" {{ asset('images/icons/logo-desktop.svg')}} " alt=""> {{ is_mobile()}} </a>
         {% endif %}
