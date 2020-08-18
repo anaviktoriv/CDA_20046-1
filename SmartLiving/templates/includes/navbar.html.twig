@@ -2,9 +2,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             {% if is_mobile() == true %}
-            <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt=""> {{ is_mobile()}}
+            <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt="logo" class="logo-desktop"> {{ is_mobile()}}
         {% else %}
-        <img src=" {{ asset('images/icons/logo-desktop.svg')}} " alt=""> {{ is_mobile()}} </a>
+        <img src=" {{ asset('images/icons/logo-desktop.svg')}} " alt="logo" class="logo-mobile"> {{ is_mobile()}} </a>
         {% endif %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
