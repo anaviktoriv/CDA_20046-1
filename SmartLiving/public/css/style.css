@@ -15,3 +15,104 @@
     height: 40px;
     width: auto;
 }
+
+/*--- Index Produit ---*/
+            /*Mobile*/
+@media (max-width: 992px) {
+        /*trending*/
+    .trending-products-title {
+        font-family: 'Roboto Bold', sans-serif;
+        font-size: 24px;
+        font-weight: bolder;
+        letter-spacing: 0;
+        color: #1E255C;
+        opacity: 1;
+        margin-bottom: 31px;
+        margin-top: 40px;
+    }
+
+    .carousel-item > img {
+        border-radius: 10px 10px 10px 10px;
+        min-width: 240px;
+        min-height: 325px;
+        max-width: 375px;
+        max-height:450px;
+    }
+
+    .carousel-indicators {
+        bottom: -50px;
+    }
+
+    .carousel-indicators .active {
+        background-color: #f1d23d;
+    }
+
+    .carousel-indicators li {
+        background-color: #E6E5ED;
+        opacity: 1;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+    }
+
+    .carousel-control-prev-icon {
+        background-color: #CCCCF3;
+    }
+
+    .carousel-control-next-icon {
+        background-color: #CCCCF3;
+    }
+
+    .carousel-control-next {
+        right: 10px;
+    }
+
+    .product-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        color: #1E255C;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .product-category {
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+        color: #CCCCF3;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .ratings {
+        font-family: 'Lato', sans-serif;
+        color: #F1D23D;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .product-price {
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        color: #1E255C;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .btn-primary {
+        background-color: #BBE4E4;
+        border: 0;
+        color: black;
+        border-radius: 8px 8px 8px 8px;
+        width: 271px;
+        height: 43px;
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+    }
+
+    .cart-icon {
+        margin-left: 10px;
+    }
+
+    /*discount*/
+
+}
