@@ -1,34 +1,66 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand my-auto" href="#">
             {% if is_mobile() == true %}
-                <img src=" {{ asset('images/icons/logo-mobile.svg') }} " alt="" class="logo-mobile">
+
+                <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt="logo" class="logo-desktop">
             {% else %}
-                <img src=" {{ asset('images/icons/logo-desktop.svg') }} " alt="" class="logo-desktop">
+                <img src=" {{ asset('images/icons/logo-desktop.svg')}} " alt="logo" class="logo-mobile">
             {% endif %}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-
-                    <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> Accueil <span class="sr-only">(current)</span></a>
+                </li>
+
+                <!-- DROPDOWN -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Catégories </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> Drones </a></li>
+                        <li><a class="dropdown-item" href="#"> Robots </a></li>
+                        <li><a class="dropdown-item" href="#"> Télés </a></li>
+                        <li><a class="dropdown-item" href="#"> Accesoirs </a></li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Ordinateurs </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="">Portables</a></li>
+                                <li><a class="dropdown-item" href="">Bureaux</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Home Smart Devices </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="">Assistants connectés</a></li>
+                                <li><a class="dropdown-item" href="">Enceintes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nous Contacter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nous Connaître</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mt-2 mt-lg-0 ml-auto" >
+                <li class="nav-item navbar-icon">
+                    <a class="nav-link" href="#"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="panier"> </a>
+                </li>
+                <li class="nav-item navbar-icon">
+                    <a class="nav-link" href="#"> <img src=" {{ asset('images/icons/cart-black.svg')}} " alt="panier"> </a>
+                </li>
+            </ul>
         </div>
     </nav>
+
 </div>
+
+
