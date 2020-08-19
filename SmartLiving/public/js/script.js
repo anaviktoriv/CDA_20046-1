@@ -1,27 +1,20 @@
-
-
-
-
-// jquery ready start
-$(document).ready(function() {
-    // jQuery code
+document.addEventListener('DOMContentLoaded', function() {
 
     //////////////////////// Prevent closing from click inside dropdown
-    $(document).on('click', '.dropdown-menu', function (e) {
+    document.querySelectorAll('.dropdown-menu').forEach(element => element.addEventListener('click', function(e){
         e.stopPropagation();
-    });
+    }));
 
     // make it as accordion for smaller screens
-  if ($(window).width() < 992) {
-        $('.dropdown-menu a').click(function(e){
-            e.preventDefault();
-            if($(this).next('.submenu').length){
-                $(this).next('.submenu').toggle();
-            }
-            $('.dropdown').on('hide.bs.dropdown', function () {
-                $(this).find('.submenu').hide();
-            })
-        });
-    }
+    document.querySelectorAll('.dropdown-toggle').forEach(element => element.addEventListener('click', toggleSubMenuMobile));
 
-}); // jquery end
+    function toggleSubMenuMobile(e) {
+        if (window.innerWidth < 992) {
+            e.preventDefault();
+            let nextElement = this.nextElementSibling;
+            if(nextElement.classList.contains('submenu')){
+                nextElement.style.display = nextElement.style.display === 'block'? 'none' : 'block';
+            }
+        }
+    }
+});
