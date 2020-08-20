@@ -39,15 +39,15 @@
         max-height:450px;
     }
 
-    .carousel-indicators {
+    .carousel-indicators-product-list {
         bottom: -50px;
     }
 
-    .carousel-indicators .active {
+    .carousel-indicators-product-list .active {
         background-color: #f1d23d;
     }
 
-    .carousel-indicators li {
+    .carousel-indicators-product-list li {
         background-color: #E6E5ED;
         opacity: 1;
         width: 7px;
