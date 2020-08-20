@@ -17,10 +17,10 @@
 }
 
 /*--- Index Produit ---*/
-            /*Mobile*/
+/*Mobile*/
 @media (max-width: 992px) {
-        /*trending*/
-    .trending-products-title {
+    /*trending*/
+    .section-title {
         font-family: 'Roboto Bold', sans-serif;
         font-size: 24px;
         font-weight: bolder;
@@ -67,12 +67,18 @@
         right: 10px;
     }
 
+    /*.product-infos {*/
+    /*    min-width: 240px;*/
+    /*    max-width: 375px;*/
+    /*}*/
+
     .product-title {
         font-family: 'Lato', sans-serif;
         font-size: 14px;
         color: #1E255C;
         opacity: 1;
-        margin: 0;
+        margin-bottom: 0;
+        margin-left: 5px;
     }
 
     .product-category {
@@ -80,14 +86,19 @@
         font-size: 13px;
         color: #CCCCF3;
         opacity: 1;
-        margin: 0;
+        margin-bottom: 0;
+        margin-left: 35px;
     }
 
-    .ratings {
-        font-family: 'Lato', sans-serif;
+    .rating-stars {
+        width: 18px;
         color: #F1D23D;
         opacity: 1;
         margin: 0;
+    }
+
+    .rating-stars-position {
+        margin-left: 30px;
     }
 
     .product-price {
@@ -95,7 +106,7 @@
         font-size: 18px;
         color: #1E255C;
         opacity: 1;
-        margin: 0;
+        margin-bottom: 0;
     }
 
     .btn-primary {
@@ -109,59 +120,143 @@
         font-size: 13px;
     }
 
+    .btn-primary:hover {
+        background-color: #F1D23D!important;
+        color: black;
+    }
+
+    .btn-primary:active {
+        background-color: #F1D23D!important;
+        color: black;
+    }
+
     .cart-icon {
         margin-left: 10px;
+        width: 14px;
+        height: 12px;
     }
 
     /*discount*/
+    .limited-offer {
+        font-family: 'Lato', sans-serif;
+        font-size: 19px;
+        color: #1E255C;
+        background: #CCCCF3;
+        width: 146px;
+        height: 32px;
+        border-radius: 8px;
+        margin-top: 34px;
+    }
 
+    .limited-offer-title {
+        font-family: 'Roboto Bold', sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        color: #1E255C;
+    }
+
+    .limited-offer-content {
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        color: black;
+    }
+
+    .limited-offer-price{
+        font-family: 'Lato', sans-serif;
+        font-size: 22px;
+        color: #1E255C;
+    }
+
+    .limited-offer-former-price{
+        font-family: 'Lato', sans-serif;
+        font-size: 22px;
+        color: #B2B2B2;
+        text-decoration: line-through;
+    }
+    /** best-seller - new arrivals - best reviews **/
+    .product-list-image-small {
+        border-radius: 20px;
+        box-shadow: 0 3px 6px #00000029;
+    }
+
+    .product-title-small {
+        font-family: 'Lato', sans-serif;
+        font-size: 12px;
+        color: #1E255C;
+    }
+
+    .product-price-small {
+        font-family: 'Lato', sans-serif;
+        font-size: 15px;
+        color: #F1D23D;
+    }
+
+    .separator {
+        border: 1px solid #BBE4E4;
+        width: 288px;
+        margin: auto;
+    }
+
+    .see-more {
+        font-family: 'Lato', sans-serif;
+        font-size: 15px;
+        color: #1E255C;
+        margin-top: -10px;
+    }
+
+    .see-more-dots {
+        font-family: 'Lato', sans-serif;
+        font-size: 25px;
+        color: #1E255C;
+        line-height: 10px;
+        margin-bottom: 30px;
+    }
 }
 
-
-
-/*---  NAVBAR ICONS ---*/
-.navbar-icon{
-    height: 30px;
-    width: auto;
-}
-
-
-/*---  NAVIGATION ---*/
-
-.active{
-    color: #F1D23D;
-}
-
-@media (min-width: 992px) {
-    .dropdown-menu .dropdown-toggle:after {
-        border-top: .3em solid transparent;
-        border-right: 0;
-        border-bottom: .3em solid transparent;
-        border-left: .3em solid;
+    /*---  NAVBAR ICONS ---*/
+    .navbar-icon{
+        height: 30px;
+        width: auto;
     }
 
-    .dropdown-menu .dropdown-menu {
-        margin-left: 0;
-        margin-right: 0;
+
+    /*---  NAVIGATION ---*/
+
+    .active{
+        color: #F1D23D;
     }
 
-    .dropdown-menu li {
-        position: relative;
+    @media (min-width: 992px) {
+        .dropdown-menu .dropdown-toggle:after {
+            border-top: .3em solid transparent;
+            border-right: 0;
+            border-bottom: .3em solid transparent;
+            border-left: .3em solid;
+        }
+
+        .dropdown-menu .dropdown-menu {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .dropdown-menu li {
+            position: relative;
+        }
+
+        .nav-item .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -7px;
+        }
+
+        .dropdown-menu > li:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown-menu > li:hover > .submenu {
+            display: block;
+        }
     }
 
-    .nav-item .submenu {
-        display: none;
-        position: absolute;
-        left: 100%;
-        top: -7px;
-    }
-
-    .dropdown-menu > li:hover {
-        background-color: #f1f1f1
-    }
-
-    .dropdown-menu > li:hover > .submenu {
-        display: block;
-    }
-}
 
