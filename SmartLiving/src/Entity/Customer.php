@@ -41,7 +41,7 @@ class Customer
 
     /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="customers")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $company;
 

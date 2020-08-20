@@ -22,11 +22,6 @@ class CreditCard
     /**
      * @ORM\Column(type="string", length=25)
      */
-    private $issuer;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $number;
 
     /**
@@ -57,18 +52,6 @@ class CreditCard
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIssuer(): ?string
-    {
-        return $this->issuer;
-    }
-
-    public function setIssuer(string $issuer): self
-    {
-        $this->issuer = $issuer;
-
-        return $this;
     }
 
     public function getNumber(): ?int
