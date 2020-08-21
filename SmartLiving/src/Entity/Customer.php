@@ -55,6 +55,8 @@ class Customer
         $this->reviews = new ArrayCollection();
         $this->creditCard = new ArrayCollection();
         $this->address = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
+        $this->creditCards = new ArrayCollection();
     }
         /**
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="customer", cascade={"persist", "remove"})
@@ -62,15 +64,14 @@ class Customer
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=CreditCard::class, inversedBy="customers")
-     */
-    private $creditCard;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Address::class, inversedBy="customers")
      */
     private $addresses;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=CreditCard::class, inversedBy="customers")
+     */
+    private $creditCards;
 
     public function getId(): ?int
     {
@@ -168,22 +169,6 @@ class Customer
         $this->company = $company;
         return $this;
     }
-    /**
-     * @return Collection|CreditCard[]
-     */
-    public function getCreditCard(): Collection
-    {
-        return $this->creditCard;
-    }
-
-    public function addCreditCard(CreditCard $creditCard): self
-    {
-        if (!$this->creditCard->contains($creditCard)) {
-            $this->creditCard[] = $creditCard;
-        }
-
-        return $this;
-    }
 
     public function getStatus(): ?Status
     {
@@ -195,38 +180,57 @@ class Customer
         return $this;
     }
 
-    public function removeCreditCard(CreditCard $creditCard): self
+    /**
+     * @return Collection|Address[]
+     */
+    public function getAddresses(): Collection
     {
-        if ($this->creditCard->contains($creditCard)) {
-            $this->creditCard->removeElement($creditCard);
+        return $this->addresses;
+    }
+
+    public function addAddress(Address $address): self
+    {
+        if (!$this->addresses->contains($address)) {
+            $this->addresses[] = $address;
+        }
+
+        return $this;
+    }
+
+    public function removeAddress(Address $address): self
+    {
+        if ($this->addresses->contains($address)) {
+            $this->addresses->removeElement($address);
         }
 
         return $this;
     }
 
     /**
-     * @return Collection|Address[]
+     * @return Collection|CreditCard[]
      */
-    public function getAddress(): Collection
+    public function getCreditCards(): Collection
     {
-        return $this->address;
+        return $this->creditCards;
     }
 
-    public function addAddress(Address $addresses): self
+    public function addCreditCard(CreditCard $creditCard): self
     {
-        if (!$this->addresses->contains($addresses)) {
-            $this->addresses[] = $addresses;
+        if (!$this->creditCards->contains($creditCard)) {
+            $this->creditCards[] = $creditCard;
         }
 
         return $this;
     }
 
-    public function removeAddress(Address $addresses): self
+    public function removeCreditCard(CreditCard $creditCard): self
     {
-        if ($this->addresses->contains($addresses)) {
-            $this->addresses->removeElement($addresses);
+        if ($this->creditCards->contains($creditCard)) {
+            $this->creditCards->removeElement($creditCard);
         }
 
         return $this;
     }
+    
+
 }

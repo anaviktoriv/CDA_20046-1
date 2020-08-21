@@ -30,11 +30,6 @@ class CreditCard
     private $expirationDate;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="creditCard")
-     */
-    private $customers;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $cardOwnerName;
@@ -44,10 +39,16 @@ class CreditCard
      */
     private $isDefault;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="creditCards")
+     */
+    private $customers;
+
     public function __construct()
     {
         $this->customers = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -78,6 +79,30 @@ class CreditCard
         return $this;
     }
 
+    public function getCardOwnerName(): ?string
+    {
+        return $this->cardOwnerName;
+    }
+
+    public function setCardOwnerName(string $cardOwnerName): self
+    {
+        $this->cardOwnerName = $cardOwnerName;
+
+        return $this;
+    }
+
+    public function getIsDefault(): ?bool
+    {
+        return $this->isDefault;
+    }
+
+    public function setIsDefault(bool $isDefault): self
+    {
+        $this->isDefault = $isDefault;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Customer[]
      */
@@ -102,30 +127,6 @@ class CreditCard
             $this->customers->removeElement($customer);
             $customer->removeCreditCard($this);
         }
-
-        return $this;
-    }
-
-    public function getCardOwnerName(): ?string
-    {
-        return $this->cardOwnerName;
-    }
-
-    public function setCardOwnerName(string $cardOwnerName): self
-    {
-        $this->cardOwnerName = $cardOwnerName;
-
-        return $this;
-    }
-
-    public function getIsDefault(): ?bool
-    {
-        return $this->isDefault;
-    }
-
-    public function setIsDefault(bool $isDefault): self
-    {
-        $this->isDefault = $isDefault;
 
         return $this;
     }

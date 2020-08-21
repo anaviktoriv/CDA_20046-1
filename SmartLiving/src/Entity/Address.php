@@ -40,11 +40,6 @@ class Address
     private $country;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="address")
-     */
-    private $customers;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $fullName;
@@ -64,11 +59,16 @@ class Address
      */
     private $shippings;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Customer::class, mappedBy="addresses")
+     */
+    private $customers;
+
     public function __construct()
     {
-        $this->customers = new ArrayCollection();
         $this->payments = new ArrayCollection();
         $this->shippings = new ArrayCollection();
+        $this->customers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,34 +120,6 @@ class Address
     public function setCountry(string $country): self
     {
         $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Customer[]
-     */
-    public function getCustomers(): Collection
-    {
-        return $this->customers;
-    }
-
-    public function addCustomer(Customer $customer): self
-    {
-        if (!$this->customers->contains($customer)) {
-            $this->customers[] = $customer;
-            $customer->addAddress($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomer(Customer $customer): self
-    {
-        if ($this->customers->contains($customer)) {
-            $this->customers->removeElement($customer);
-            $customer->removeAddress($this);
-        }
 
         return $this;
     }
@@ -233,6 +205,34 @@ class Address
             if ($shipping->getAddress() === $this) {
                 $shipping->setAddress(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Customer[]
+     */
+    public function getCustomers(): Collection
+    {
+        return $this->customers;
+    }
+
+    public function addCustomer(Customer $customer): self
+    {
+        if (!$this->customers->contains($customer)) {
+            $this->customers[] = $customer;
+            $customer->addAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCustomer(Customer $customer): self
+    {
+        if ($this->customers->contains($customer)) {
+            $this->customers->removeElement($customer);
+            $customer->removeAddress($this);
         }
 
         return $this;
