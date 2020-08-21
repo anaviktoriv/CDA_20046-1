@@ -13,7 +13,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
     {
         $product = new Product();
         $product->setTitle('MacBook Pro 15" Retina');
-        $product->setDescription('Découvrez l\'incontournable MacBook Pro, icône de la marque Apple, qui allie à la fois un design épuré et la puissance nécessaire pour vous permettre de gagner en productivité et de vous divertir.');
+        $product->setDescription('Découvrez  divertir.');
         $product->setStatus('in_stock');
         $product->setPhoto('macbook_pro.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::LEKA_SUPPLIER_REFERENCE));
@@ -27,7 +27,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
 
         $product = new Product();
         $product->setTitle('Robot Humanoïde Familial');
-        $product->setDescription('MAON est le premier robot humanoïde créé par Tokyo Robotics. Aujourd\'hui à sa 6ème version, MAON est célèbre dans le monde entier. Formidable outil de programmation, il est devenu une référence dans l\'éducation et la recherche. Egalement utilisé en tant qu\'assistant par les entreprises et établissements de santé, MAON permet d\'accueillir, informer et divertir les visiteurs.');
+        $product->setDescription('MAON');
         $product->setStatus('in_stock');
         $product->setPhoto('robot_maon.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::NAGASE_SUPPLIER_REFERENCE));

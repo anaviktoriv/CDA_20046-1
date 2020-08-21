@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
 
     //////////////////////// Prevent closing from click inside dropdown

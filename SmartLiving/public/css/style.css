@@ -191,6 +191,9 @@
         color: #F1D23D;
     }
 
+/*---  NAV BAR DROPDOWNS ---*/
+
+
     .separator {
         border: 1px solid #BBE4E4;
         width: 288px;
@@ -260,3 +263,43 @@
     }
 
 
+/*------------------  LOGIN & SIGNUP & USER & SECURITY  -----------------------*/
+
+/* Buttons */
+
+.btn-midnight-blue{
+    background-color: #1E255C;
+    text-align: center;
+    font: normal normal normal 16px/19px Lato;
+    letter-spacing: 0px;
+    color: #FBFBFB;
+    border-radius: 10px;
+    height: 45px;
+}
+.border-radius-10{
+    border-radius: 10px;
+}
+
+/* Fonts and Text */
+
+.login-link{
+    text-align: left;
+    font: normal normal normal 12px/15px Lato;
+    letter-spacing: 0;
+    color: #F1D23D;
+}
+.login-link:hover{
+    text-decoration: none;
+    color: #1E255C;
+}
+
+.signup-link{
+    text-align: left;
+    text-decoration: underline;
+    font: normal normal normal 14px/17px Lato;
+    letter-spacing: 0;
+    color: #1E255C;
+}
+.signup-link:hover{
+    color: #F1D23D;
+}

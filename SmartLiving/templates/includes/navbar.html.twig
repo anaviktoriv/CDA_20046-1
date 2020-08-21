@@ -42,6 +42,7 @@
                             </ul>
                         </li>
                     </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nous Contacter</a>
                 </li>
@@ -49,12 +50,26 @@
                     <a class="nav-link" href="#">Nous Connaître</a>
                 </li>
             </ul>
+
             <ul class="navbar-nav mt-2 mt-lg-0 ml-auto" >
-                <li class="nav-item navbar-icon">
-                    <a class="nav-link" href="#"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="panier"> </a>
+
+                {% if is_granted('ROLE_USER') %}
+                {#user account drop down#}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> <img src=" {{ asset('images/icons/login-yellow.svg')}} " alt="login"> </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="{{ path('app_account') }}"> Mon compte </a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_orders') }}"> Mes commandes </a></li>
+                        <li><a class="dropdown-item" href=" {{ path('app_logout') }}"> Se déconnecter </a></li>
+                    </ul>
                 </li>
-                <li class="nav-item navbar-icon">
-                    <a class="nav-link" href="#"> <img src=" {{ asset('images/icons/cart-black.svg')}} " alt="panier"> </a>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link navbar-icon" href="{{ path('app_login') }}"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="login"> </a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link  navbar-icon" href="#"> <img src=" {{ asset('images/icons/cart-black.svg')}} " alt="panier"> </a>
                 </li>
             </ul>
         </div>

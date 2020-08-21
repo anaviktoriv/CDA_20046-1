@@ -29,7 +29,6 @@ class AppExtension extends AbstractExtension
     public function checkIfMobile()
     {
         $detect = new MobileDetect();
- dump($detect);
         if ( $detect->isMobile() ) {
             return true;
         } else {

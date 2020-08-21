@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column m-4">
+    <h1 class="align-self-center">Login</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <form method="post" class="d-flex flex-column">
+        <div class="form-group">
+            <label for="username">Email:</label>
+            <input class="form-control border-radius-10" type="text" id="username" name="email" value="{{ last_username }}" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input class="form-control border-radius-10" type="password" id="password" name="password" />
+            <small> <a class="login-link" href="#">Mot de passe oublié ?</a> </small>
+        </div>
+        <button class ="btn btn-midnight-blue" type="submit">Connexion</button>
+        <div class="form-group">
+        <a class="signup-link text-right" href="#">Pas de compte ? S'inscrire</a>
+        </div>
+
+        {# input for a build-in protection against cross-site request forgery #}
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+    </form>
+    </div>
+{% endblock %}
