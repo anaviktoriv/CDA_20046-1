@@ -1,0 +1,112 @@
+
+/*------------------  LOGIN & SIGNUP & USER & SECURITY  -----------------------*/
+.main-content-wrapper{
+    min-height: 100vh;
+    background-color: #CCCCF3;
+
+}
+
+.form-wrapper{
+    max-width: 700px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.separator-login-title{
+    border-top: 1px solid #ced4da;
+    width: 100%;
+}
+
+.display-block-override{
+    display: block;
+}
+.yellow-bottom-border{
+    border-bottom: 2px solid #F1D23D;
+    margin-bottom: -1.5px;
+    z-index: 2;
+}
+
+.width-20px-icon{
+    height: 20px;
+    width: auto;
+}
+
+/* Buttons */
+
+.btn-midnight-blue{
+    background-color: #1E255C;
+    text-align: center;
+    font: normal normal normal 16px/19px Lato;
+    letter-spacing: 0px;
+    color: #FBFBFB;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.btn-midnight-blue:hover{
+    background-color: #F1D23D;
+    color: #000000;
+}
+
+.border-radius-10{
+    border-radius: 10px;
+}
+
+/* Links */
+.yellow-login-icon-hover{
+    background-image: url("../images/icons/login-yellow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width:20px;
+    height: 20px;
+    display:none;
+}
+.sign-up-link:hover{
+    border-bottom: 2px solid #F1D23D;
+    margin-bottom: -1.5px;
+    z-index: 2;
+}
+.sign-up-link:hover>h1{
+    color: #F1D23D;
+}
+.sign-up-link:hover>img{
+    display: none;
+}
+.sign-up-link:hover>div{
+    display: block;
+}
+
+/* Fonts and Text */
+.title-connection{
+    color: #F1D23D;
+    text-align: left;
+    font: normal normal normal 25px Lato;
+}
+.title-connection-black{
+    color:#000000;
+    text-align: left;
+    font: normal normal normal 25px Lato;
+}
+
+.login-link{
+    text-align: left;
+    font: normal normal normal 12px/15px Lato;
+    letter-spacing: 0;
+    color: #F1D23D;
+}
+.login-link:hover{
+    text-decoration: none;
+    color: #1E255C;
+}
+
+.signup-link{
+    text-align: left;
+    text-decoration: underline;
+    font: normal normal normal 14px/17px Lato;
+    letter-spacing: 0;
+    color: #1E255C;
+}
+.signup-link:hover{
+    color: #F1D23D;
+}

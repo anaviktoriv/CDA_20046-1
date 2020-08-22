@@ -19,8 +19,10 @@ class AccountController extends AbstractController
      */
     public function index()
     {
-        return $this->render('account/index.html.twig', [
-            'controller_name' => 'AccountController',
+        dd($this->getUser()-getCustomer());
+
+        return $this->render('account/account.html.twig', [
+            'page_title' => 'Mon Compte',
         ]);
     }
 
@@ -30,8 +32,8 @@ class AccountController extends AbstractController
      */
     public function getOrders()
     {
-        return $this->render('account/index.html.twig', [
-            'controller_name' => 'AccountController',
+        return $this->render('account/account.html.twig', [
+            'page_title' => 'Mes Commandes',
         ]);
     }
 }
