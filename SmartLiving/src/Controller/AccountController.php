@@ -12,15 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/account")
  */
-class AccountController extends AbstractController
+class AccountController extends BaseController
 {
     /**
      * @Route("/", name="app_account")
      */
     public function index()
     {
-        dd($this->getUser()-getCustomer());
-
         return $this->render('account/account.html.twig', [
             'page_title' => 'Mon Compte',
         ]);

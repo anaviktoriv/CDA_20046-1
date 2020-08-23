@@ -16,6 +16,84 @@
     width: auto;
 }
 
+/* ---------     Titles    ------------ */
+/*TODO: Use same class for titles on all pages*/
+
+/* H1 - page title */
+.title-h1-midnight-blue{
+    text-align: center;
+    font: normal normal bold 34px Roboto;
+    letter-spacing: 0;
+    color: #1E255C;
+}
+
+@media (max-width: 992px) {
+    .title-h1-midnight-blue{
+        font-size: 24px;
+
+    }
+}
+
+/* H2 - section title */
+.title-h2-black{
+    text-align: center;
+    font: normal normal normal 24px Roboto;
+    letter-spacing: 0;
+    color: #000000;
+}
+
+@media (max-width: 992px) {
+    .title-h2-black{
+        font-size: 20px;
+    }
+}
+
+/* H3 - mini title */
+.title-h3-midnight-blue{
+    text-align: left;
+    font: normal normal bold 20px Lato;
+    letter-spacing: 0;
+    color: #1E255C;
+}
+
+@media (max-width: 992px) {
+    .title-h3-midnight-blue{
+        font-size: 18px;
+    }
+}
+
+/* Paragraph BLACK  */
+.p-black{
+    text-align: left;
+    font: normal normal normal 18px Lato;
+    letter-spacing: 0;
+    color: #000000;
+}
+
+@media (max-width: 992px) {
+    .p-black{
+        font-size: 16px;
+    }
+}
+
+/* Paragraph DARK GRAY SMALL */
+.p-gray{
+    text-align: left;
+    font: normal normal normal 16px Lato;
+    letter-spacing: 0;
+    color: #919195;
+}
+
+@media (max-width: 992px) {
+    .p-gray{
+        font-size: 14px;
+    }
+}
+
+
+
+
+
 /*--- Index Produit ---*/
 /*Mobile*/
 @media (max-width: 992px) {

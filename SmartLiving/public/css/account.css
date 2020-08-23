@@ -1,0 +1,50 @@
+.content-wrapper{
+    max-width: 1100px;
+}
+
+/*   SEPARATOR LAVENDER */
+.separator-lavender-account{
+    border-top: 1px solid #CCCCF3;
+}
+
+
+
+/*  MODIFY BUTTON*/
+
+.lavender-modify-button{
+    height:40px;
+    background-color: #CCCCF3D9;
+    border-radius: 10px;
+}
+
+.lavender-modify-button:hover{
+    background-color: #F1D23D;
+}
+
+.lavender-modify-button:active{
+    background-color: #F1D23D;
+}
+
+/*  ACCOUNT LINKS CARDS */
+
+.powder-blue-account-card{
+    border: 3px solid #BBE4E4;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.powder-blue-account-card:hover{
+    background-color: rgba(189, 228, 229, 0.48);
+}
+
+.powder-blue-account-card:active{
+    background-color: rgba(189, 228, 229, 0.48);
+}
+
+
+/* ACCOUNT LINKS ICONS */
+
+.account-link-icon{
+    max-width: 90px;
+    max-height: 90px;
+}

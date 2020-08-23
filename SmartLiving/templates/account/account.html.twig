@@ -7,5 +7,102 @@
 {% endblock %}
 
 {% block body %}
+    <div class="content-wrapper mx-auto mt-4">
+        <h1 class="title-h1-midnight-blue">Mon compte</h1>
 
+        <section class="row mt-4 no-gutters justify-content-center">
+
+            {# -------------  SECORITY AND CONNECTION   -------------- #}
+            <div class="col-11 col-lg-5">
+                <h2 class="title-h2-black">Connexion et sécurité</h2>
+                <div class="separator-lavender-account"></div>
+
+                {# Nom  #}
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">Nom :</h3>
+                        <p class="p-black">{{ app.user.customer.lastName }}</p>
+                    </div>
+                        <button class=" col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+
+                {# Prénom #}
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">Prénom :</h3>
+                        <p class="p-black">{{ app.user.customer.firstName }}</p>
+                    </div>
+                    <button class=" col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+
+                {# Email #}
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">E-mail :</h3>
+                        <p class="p-black">{{ app.user.email }}</p>
+                    </div>
+                    <button class=" col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+
+                {# Phone #}
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">Numero de téléphone :</h3>
+                        <p class="p-black">{{ app.user.customer.phone }}</p>
+                    </div>
+                    <button class=" col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+
+                {# Password #}
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">Mot de passe :</h3>
+                        <p class="p-black">**********</p>
+                    </div>
+                    <button class=" col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+            </div>
+
+
+            {# -------------  ORDERS ADDRESSES PAYMENTS LINKS   -------------- #}
+
+            <div class="col-11 col-lg-6 ml-0 ml-lg-5 mt-5 mt-lg-0">
+
+                {# Orders #}
+                <div class="row no-gutters powder-blue-account-card  align-items-center">
+                    <img class="col-3 account-link-icon" src="{{ asset('images/icons/package-icon.svg')}} " alt="package icon">
+                    <div class="col-8 ml-3">
+                        <h3 class="title-h3-midnight-blue">Mes commandes</h3>
+                        <p class="p-gray">Suivre, retourner ou acheter à nouveau</p>
+                    </div>
+                </div>
+
+                {# Addresses #}
+                <div class="row no-gutters powder-blue-account-card  align-items-center mt-5">
+                    <img class="col-3 account-link-icon" src="{{ asset('images/icons/location-icon.svg')}} " alt="location icon">
+                    <div class="col-8 ml-3">
+                        <h3 class="title-h3-midnight-blue">Mes adresses</h3>
+                        <p class="p-gray">Modifier les adresses et les préférences de livraison des commandes</p>
+                    </div>
+                </div>
+
+                {# Addresses #}
+                <div class="row no-gutters powder-blue-account-card  align-items-center mt-5">
+                    <img class="col-3 account-link-icon" src="{{ asset('images/icons/credit-card-icon.svg')}} " alt="location icon">
+                    <div class="col-8 ml-3">
+                        <h3 class="title-h3-midnight-blue">Mes paiements</h3>
+                        <p class="p-gray">Gérer mes modes de paiement</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+    </div>
 {% endblock %}
