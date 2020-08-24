@@ -95,6 +95,9 @@
 
 
 /*--- Index Produit ---*/
+
+
+
 /*Mobile*/
 @media (max-width: 992px) {
     /*trending*/
@@ -144,11 +147,6 @@
     .carousel-control-next {
         right: 10px;
     }
-
-    /*.product-infos {*/
-    /*    min-width: 240px;*/
-    /*    max-width: 375px;*/
-    /*}*/
 
     .product-title {
         font-family: 'Lato', sans-serif;
@@ -292,6 +290,100 @@
         line-height: 10px;
         margin-bottom: 30px;
     }
+}
+
+/*Desktop*/
+@media (min-width: 992px) {
+
+    .section-title {
+        font-family: 'Roboto Bold', sans-serif;
+        font-weight: bold;
+        font-size: 34px;
+        color: #1E255C;
+        margin-top: 128px;
+        margin-bottom: 80px;
+    }
+
+    .product {
+        max-width: 375px;
+    }
+
+    .product-image-desktop {
+        border-radius: 10px;
+        /*min-width: 240px;*/
+        max-width: 375px;
+        /*min-height: 325px;*/
+        /*max-height: 450px;*/
+        /*height: 100%;*/
+    }
+
+
+    .product-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #1E255C;
+        opacity: 1;
+        margin-bottom: 0;
+    }
+
+    .product-category {
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        color: #CCCCF3;
+        opacity: 1;
+        margin-bottom: 0;
+    }
+
+    .rating-stars {
+        /*width: 25px;*/
+        color: #F1D23D;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .product-price {
+        font-family: 'Lato', sans-serif;
+        font-size: 25px;
+        color: #1E255C;
+        opacity: 1;
+        margin-bottom: 0;
+    }
+
+    .btn-primary {
+        background-color: #BBE4E4;
+        border: 0;
+        color: black;
+        border-radius: 8px 8px 8px 8px;
+        width: 375px;
+        height: 39px;
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+    }
+
+    .btn-primary:hover {
+        background-color: #F1D23D!important;
+        color: black;
+    }
+
+    .btn-primary:active {
+        background-color: #F1D23D!important;
+        color: black;
+    }
+
+    .cart-icon {
+        margin-left: 10px;
+        width: 18px;
+        height: 17px;
+    }
+
+    /*discount*/
+
+    .discount {
+        background-image: url("../images/products/ps.png");
+        height: 1184px;
+    }
+
+
 }
 
     /*---  NAVBAR ICONS ---*/
