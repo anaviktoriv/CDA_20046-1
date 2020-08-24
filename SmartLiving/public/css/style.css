@@ -62,6 +62,20 @@
     }
 }
 
+/* H4 - mini title black lato */
+.title-h4-black{
+    text-align: center;
+    font: normal normal normal 24px Lato;
+    letter-spacing: 0;
+    color: #000000;
+}
+
+@media (max-width: 992px) {
+    .title-h4-black{
+        font-size: 20px;
+    }
+}
+
 /* Paragraph BLACK  */
 .p-black{
     text-align: left;

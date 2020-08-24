@@ -42,12 +42,4 @@ class TestController extends AbstractController {
     }
 
 
-    /**
-     * @Route("profile", name="app_profile")
-     */
-
-    public function profile_edit(){
-        return new Response('We are here profile');
-    }
-
 }
