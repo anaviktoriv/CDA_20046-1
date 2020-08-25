@@ -22,7 +22,7 @@ class BaseController extends AbstractController
         //SET REGEX
         //Any character except for <>%\$
         $allASCIILettersAndNumbersRegex = '/^[^<>%\/\$]{1,50}$/';
-        $phoneRegex = '/^[+]?[\d]{0,14}$/';
+        $phoneRegex = '/^[+]?[\d()-]{0,14}$/';
         $emailRegex = '/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/';
 
         //sanitize string

@@ -42,4 +42,16 @@ class TestController extends AbstractController {
     }
 
 
+    /**
+     * @Route("/success", name="app_success")
+     */
+    public function success() {
+
+        return $this->render('helperPages/success.html.twig', [
+            'page_title' => 'Success',
+            'message' => 'Votre mot de pass a été modifié avec le success.',
+            'goTo' => '/account'
+        ]);
+    }
+
 }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ page_title }} {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="main-content-wrapper row">
+        <div class="d-flex flex-column form-wrapper-small my-auto mx-auto col-10 lg-6 p-5">
+            <img  class="width-100px mx-auto" src="{{ asset('images/icons/check-success-icon.svg') }}" alt="check icon">
+                <h1 class="text-center title1 ml-2 mb-0">{{ page_title }}</h1>
+                <p class="p-black text-center pt-3">{% if message is defined %} {{ message }} {% endif %}</p>
+            <a href="{{ goTo }}" class="btn btn-midnight-blue text-center">OK</a>
+        </div>
+
+    </div>
+
+{% endblock %}

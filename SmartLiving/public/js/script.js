@@ -26,15 +26,15 @@ const dataTypes = {
     },
     'first-name': {
         'title': 'Changer le prénom',
-        'label': 'Prénom',
+        'label': 'Prénom :',
     },
     'email': {
         'title': 'Changer E-mail',
-        'label': 'E-mail',
+        'label': 'E-mail :',
     },
     'phone': {
         'title': 'Changer le numéro de téléphone',
-        'label': 'Numéro de téléphone',
+        'label': 'Numéro de téléphone :',
     },
 
 }
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 if (dismissAccountDetailsModal) {
     dismissAccountDetailsModal.addEventListener('click', () => {
         accountDetailsModal.style.display = 'none'
+        document.querySelector('body').classList.remove('overflow-hidden')
     })
 }
 
@@ -90,8 +91,21 @@ if (lastNameBtn) {
 /* ----------------   CHANGE FIRST NAME ----------------- */
 if (firstNameBtn) {
     firstNameBtn.addEventListener('click', (event) => {
-        console.log('firstnamebtn clicked')
         fillInModalWithRelevantInfo('data-value', 'data-type', firstNameBtn)
+    })
+}
+
+/* ----------------   CHANGE EMAIL ----------------- */
+if (emailBtn) {
+    emailBtn.addEventListener('click', (event) => {
+        fillInModalWithRelevantInfo('data-value', 'data-type', emailBtn)
+    })
+}
+
+/* ----------------   CHANGE Phone ----------------- */
+if (phoneBtn) {
+    phoneBtn.addEventListener('click', (event) => {
+        fillInModalWithRelevantInfo('data-value', 'data-type', phoneBtn)
     })
 }
 
@@ -106,13 +120,19 @@ if (submitButton) {
 
 function fillInModalWithRelevantInfo(attribute1, attribute2, triggerNode) {
 
+    //show the modal
     accountDetailsModal.style.display = 'block'
+    document.querySelector('body').classList.add('overflow-hidden')
+
     const parent = triggerNode.parentNode
     const value = parent.getAttribute(attribute1)
     const dataType = parent.getAttribute(attribute2)
     accountDetailTitle.innerHTML = dataTypes[dataType].title
     accountDetailLabel.innerHTML = dataTypes[dataType].label
     accountDetailInput.value = value
+
+    console.log(value, dataType)
+
 }
 
 function submitAccountDetails() {
@@ -122,6 +142,7 @@ function submitAccountDetails() {
     //get the correct key (which will let us know wich property to change to send as a param
     key = key.slice(0, -2)
     const propertyToUpdate = getKeyByValue(accountData, key)
+    console.log(propertyToUpdate)
 
     let xhr = new XMLHttpRequest()
     const url = serverURL + '/account/change' + '/' + propertyToUpdate + '/' + value
@@ -152,6 +173,10 @@ function submitAccountDetails() {
                 }
 
             }
+
+            setTimeout(function() {
+                window.location.reload()
+            }, 900);
         }
     }
 
