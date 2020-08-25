@@ -15,7 +15,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setTitle('MacBook Pro 15" Retina');
         $product->setDescription('Découvrez  divertir.');
         $product->setStatus('in_stock');
-        $product->setPhoto('macbook_pro.jpg');
+        $product->setPhoto('macbook-pro.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::LEKA_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::LAPTOPS_CATEGORY_REFERENCE));
         $product->setUnitPrice(2500.00);
@@ -29,7 +29,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setTitle('Robot Humanoïde Familial');
         $product->setDescription('MAON');
         $product->setStatus('in_stock');
-        $product->setPhoto('robot_maon.jpg');
+        $product->setPhoto('robot-maon.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::NAGASE_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::ROBOTS_CATEGORY_REFERENCE));
         $product->setUnitPrice(499.00);
@@ -43,7 +43,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setTitle('Drone Apollo 13');
         $product->setDescription('Décrouvrez le Drone Apollo 13. Il vous suivra dans toutes vos aventures. Profitez d\'une portée 1800 mètres sans égal ainsi que d\'une qualité vidéo 4K impressionnante.');
         $product->setStatus('in_stock');
-        $product->setPhoto('drone_apollo13.jpg');
+        $product->setPhoto('drone-apollo13.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::NAGASE_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::DRONES_CATEGORY_REFERENCE));
         $product->setUnitPrice(274.99);
@@ -57,7 +57,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setTitle('Enceinte Bluetooth Bose');
         $product->setDescription('Les enceintes portables Bluetooth Bose sont conçues pour s\'adapter à votre mode de vie actif et vous offrir un son époustouflant en toutes circonstances.');
         $product->setStatus('in_stock');
-        $product->setPhoto('enceinte_bose.jpg');
+        $product->setPhoto('enceinte-bose.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::LAUZON_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::SPEAKERS_CATEGORY_REFERENCE));
         $product->setUnitPrice(99.99);
@@ -71,7 +71,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setTitle('Webcam Pavlola');
         $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
         $product->setStatus('in_stock');
-        $product->setPhoto('webcam_pavlola.jpg');
+        $product->setPhoto('webcam-pavlola.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::DEVLING_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::WEBCAMS_CATEGORY_REFERENCE));
         $product->setUnitPrice(99.99);

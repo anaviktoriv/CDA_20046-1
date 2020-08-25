@@ -35,7 +35,7 @@ class AccountController extends BaseController
      */
     public function getOrders()
     {
-        return $this->render('account/account.html.twig', [
+        return $this->render('account/myOrders.html.twig', [
             'page_title' => 'Mes Commandes',
         ]);
     }

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ page_title }} {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/myOrders.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper mx-auto mt-5">
+        <h1 class="title-h1-midnight-blue">Mes commandes</h1>
+
+        {# -------------  ORDERS   -------------- #}
+        <section class="row mt-5 pt-3 no-gutters justify-content-center">
+            <div class="col-11">
+                <div class="row no-gutters justify-content-left align-items-center mt-4">
+                    <div class="col-8">
+                        <h3 class="title-h3-midnight-blue">Nom :</h3>
+                        <p class="p-black"></p>
+                    </div>
+                    <button id="modify-last-name-btn" class="col-3 btn lavender-modify-button ml-auto">Modifier</button>
+                </div>
+                <div class="separator-lavender-account"></div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

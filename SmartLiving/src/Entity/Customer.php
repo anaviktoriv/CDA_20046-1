@@ -58,6 +58,7 @@ class Customer
         $this->address = new ArrayCollection();
         $this->addresses = new ArrayCollection();
         $this->creditCards = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
         /**
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="customer", cascade={"persist", "remove"})
@@ -73,6 +74,11 @@ class Customer
      * @ORM\ManyToMany(targetEntity=CreditCard::class, inversedBy="customers")
      */
     private $creditCards;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer")
+     */
+    private $orders;
 
     public function getId(): ?int
     {
@@ -228,6 +234,37 @@ class Customer
     {
         if ($this->creditCards->contains($creditCard)) {
             $this->creditCards->removeElement($creditCard);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+            // set the owning side to null (unless already changed)
+            if ($order->getCustomer() === $this) {
+                $order->setCustomer(null);
+            }
         }
 
         return $this;

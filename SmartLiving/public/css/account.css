@@ -48,3 +48,7 @@
     max-width: 90px;
     max-height: 90px;
 }
+
+.text-decoration-none{
+    text-decoration: none;
+}
