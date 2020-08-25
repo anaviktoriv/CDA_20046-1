@@ -9,6 +9,12 @@ use Doctrine\Persistence\ObjectManager;
 
 class CustomerFixture extends Fixture implements DependentFixtureInterface
 {
+    public const TANNAMURI_CUSTOMER_REFERENCE = 'tannamuri-customer';
+    public const BERTRAND_CUSTOMER_REFERENCE = 'bertrand-customer';
+    public const TRUJILLO_CUSTOMER_REFERENCE = 'trujillo-customer';
+    public const HOLZ_CUSTOMER_REFERENCE = 'holz-customer';
+    public const WILSON_CUSTOMER_REFERENCE = 'wilson-customer';
+
     public function load(ObjectManager $manager)
     {
         $customer = new Customer();
@@ -18,6 +24,7 @@ class CustomerFixture extends Fixture implements DependentFixtureInterface
         $customer->setCompany($this->getReference(CompanyFixture::LAUGB_COMPANY_REFERENCE));
         $customer->setPhone('(604) 555-3392');
         $manager->persist($customer);
+        $this->addReference(self::TANNAMURI_CUSTOMER_REFERENCE, $customer);
 
         $customer = new Customer();
         $customer->setLastName('Bertrand');
@@ -26,6 +33,7 @@ class CustomerFixture extends Fixture implements DependentFixtureInterface
         $customer->setCompany($this->getReference(CompanyFixture::PARIS_COMPANY_REFERENCE));
         $customer->setPhone('(1) 42.34.22.66');
         $manager->persist($customer);
+        $this->addReference(self::BERTRAND_CUSTOMER_REFERENCE, $customer);
 
         $customer = new Customer();
         $customer->setLastName('Trujillo');
@@ -34,6 +42,7 @@ class CustomerFixture extends Fixture implements DependentFixtureInterface
         $customer->setCompany($this->getReference(CompanyFixture::ANATR_COMPANY_REFERENCE));
         $customer->setPhone('(5) 555-4729');
         $manager->persist($customer);
+        $this->addReference(self::TRUJILLO_CUSTOMER_REFERENCE, $customer);
 
         $customer = new Customer();
         $customer->setLastName('Holz');
@@ -42,6 +51,7 @@ class CustomerFixture extends Fixture implements DependentFixtureInterface
         $customer->setCompany($this->getReference(CompanyFixture::RICSU_COMPANY_REFERENCE));
         $customer->setPhone('0897-034214');
         $manager->persist($customer);
+        $this->addReference(self::HOLZ_CUSTOMER_REFERENCE, $customer);
 
         $customer = new Customer();
         $customer->setLastName('Wilson');
@@ -50,6 +60,7 @@ class CustomerFixture extends Fixture implements DependentFixtureInterface
         $customer->setCompany($this->getReference(CompanyFixture::RATTC_COMPANY_REFERENCE));
         $customer->setPhone('(505) 555-5939');
         $manager->persist($customer);
+        $this->addReference(self::WILSON_CUSTOMER_REFERENCE, $customer);
 
         $manager->flush();
     }

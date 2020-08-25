@@ -4,10 +4,16 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Cet adresse e-mail est déjà associée à un compte"
+ * )
  */
 class User implements UserInterface
 {
@@ -20,6 +26,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Veuillez entrer un email")
+     * @Assert\Email()
      */
     private $email;
 
@@ -35,11 +43,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $registration_date;
-
-    /**
      * @ORM\OneToOne(targetEntity=Employee::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $employee;
@@ -47,6 +50,11 @@ class User implements UserInterface
      * @ORM\OneToOne(targetEntity=Customer::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $customer;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $agreedTermsAt;
 
     public function getId(): ?int
     {
@@ -126,18 +134,6 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRegistrationDate(): ?\DateTimeInterface
-    {
-        return $this->registration_date;
-    }
-
-    public function setRegistrationDate(\DateTimeInterface $registration_date): self
-    {
-        $this->registration_date = $registration_date;
-
-        return $this;
-    }
-
     public function getEmployee(): ?Employee
     {
         return $this->employee;
@@ -156,6 +152,18 @@ class User implements UserInterface
     public function setCustomer(?Customer $customer): self
     {
         $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getAgreedTermsAt(): ?\DateTimeInterface
+    {
+        return $this->agreedTermsAt;
+    }
+
+    public function agreeTerms(): self
+    {
+        $this->agreedTermsAt = new \DateTime();
 
         return $this;
     }

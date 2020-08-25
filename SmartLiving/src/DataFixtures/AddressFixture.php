@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Address;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AddressFixture extends Fixture
+class AddressFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -17,6 +18,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Canada');
         $address->setFullName('Yoshi Tannamuri');
         $address->setIsDefault(true);
+        $address->addCustomer($this->getReference(CustomerFixture::TANNAMURI_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -26,6 +28,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Canada');
         $address->setFullName('Yoshi Tannamuri');
         $address->setIsDefault(false);
+        $address->addCustomer($this->getReference(CustomerFixture::TANNAMURI_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -35,6 +38,7 @@ class AddressFixture extends Fixture
         $address->setCountry('France');
         $address->setFullName('Marie Bertrand');
         $address->setIsDefault(true);
+        $address->addCustomer($this->getReference(CustomerFixture::BERTRAND_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -44,6 +48,7 @@ class AddressFixture extends Fixture
         $address->setCountry('France');
         $address->setFullName('Marie Bertrand');
         $address->setIsDefault(false);
+        $address->addCustomer($this->getReference(CustomerFixture::BERTRAND_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -53,6 +58,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Mexico');
         $address->setFullName('Ana Trujillo');
         $address->setIsDefault(true);
+        $address->addCustomer($this->getReference(CustomerFixture::TRUJILLO_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -62,6 +68,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Mexico');
         $address->setFullName('Ana Trujillo');
         $address->setIsDefault(false);
+        $address->addCustomer($this->getReference(CustomerFixture::TRUJILLO_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -71,6 +78,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Switzerland');
         $address->setFullName('Michael Holz');
         $address->setIsDefault(true);
+        $address->addCustomer($this->getReference(CustomerFixture::HOLZ_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -80,6 +88,7 @@ class AddressFixture extends Fixture
         $address->setCountry('Switzerland');
         $address->setFullName('Michael Holz');
         $address->setIsDefault(false);
+        $address->addCustomer($this->getReference(CustomerFixture::HOLZ_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -89,6 +98,7 @@ class AddressFixture extends Fixture
         $address->setCountry('USA');
         $address->setFullName('Paula Wilson');
         $address->setIsDefault(true);
+        $address->addCustomer($this->getReference(CustomerFixture::WILSON_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $address = new Address();
@@ -98,8 +108,16 @@ class AddressFixture extends Fixture
         $address->setCountry('USA');
         $address->setFullName('Paula Wilson');
         $address->setIsDefault(false);
+        $address->addCustomer($this->getReference(CustomerFixture::WILSON_CUSTOMER_REFERENCE));
         $manager->persist($address);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            CustomerFixture::class,
+        );
     }
 }

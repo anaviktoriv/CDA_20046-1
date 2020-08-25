@@ -19,8 +19,7 @@
                 <div class="d-flex ml-3 pb-3 sign-up-link">
                     <img class="width-20px-icon my-auto" src=" {{ asset('images/icons/login-black.svg') }} " alt="login icon">
                     <div class="yellow-login-icon-hover  my-auto"></div>
-                    <h1 class="title-connection-black mb-0 ml-2">Inscription</h1>
-
+                    <h1 class="title-connection-black mb-0 ml-2"><a class="links" href="{{ path('user_new') }}">Inscription</a></h1>
                 </div>
             {% endif %}
         </div>
@@ -44,7 +43,7 @@
         <button class ="btn btn-midnight-blue  mt-2" type="submit">Connexion</button>
         <div class="form-group">
             {% if is_mobile() == true %}
-        <a class="signup-link text-right display-block-override mt-1" href="#">Pas de compte ? S'inscrire</a>
+        <a class="signup-link text-right display-block-override mt-1" href="{{ path('user_new') }}">Pas de compte ? S'inscrire</a>
             {% endif %}
         </div>
 

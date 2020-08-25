@@ -114,6 +114,13 @@
 }
 
 /* Links */
+.links {
+    color: #000000;
+}
+.links:hover {
+    color: #F1D23D;
+    text-decoration: none !important;
+}
 .yellow-login-icon-hover{
     background-image: url("../images/icons/login-yellow.svg");
     background-repeat: no-repeat;
@@ -124,7 +131,6 @@
     display:none;
 }
 .sign-up-link:hover{
-    border-bottom: 2px solid #F1D23D;
     margin-bottom: -1.5px;
     z-index: 2;
 }

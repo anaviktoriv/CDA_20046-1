@@ -1,0 +1,61 @@
+{{ form_start(form, {'attr': {'class': 'row p-4'}}) }}
+    <div class="col-12 form-group">
+        {{ form_label(form.customer.lastName, 'Nom') }}
+        {{ form_widget(form.customer.lastName, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.customer.lastName) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.customer.firstName, 'Prénom') }}
+        {{ form_widget(form.customer.firstName, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.customer.firstName) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.email, 'E-mail') }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.password.first, 'Entrez le mot de passe') }}
+        {{ form_widget(form.password.first, {'attr': {'class': 'form-control border-radius-10'}}) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.password.second, 'Confirmer le mot de passe') }}
+        {{ form_widget(form.password.second, {'attr': {'class': 'form-control border-radius-10'}}) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(addressForm.address, 'Adresse') }}
+        {{ form_widget(addressForm.address, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(addressForm.address) }}
+    </div>
+    <div class="col-lg-6 form-group">
+        {{ form_label(addressForm.zipCode, 'Code postal') }}
+        {{ form_widget(addressForm.zipCode, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(addressForm.zipCode) }}
+    </div>
+    <div class="col-lg-6 form-group">
+        {{ form_label(addressForm.city, 'Ville') }}
+        {{ form_widget(addressForm.city, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(addressForm.city) }}
+    </div>
+    <div class="col-lg-6 form-group">
+        {{ form_label(addressForm.country, 'Pays') }}
+        {{ form_widget(addressForm.country, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(addressForm.country) }}
+    </div>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.customer.phone, 'Numéro de téléphone') }}
+        {{ form_widget(form.customer.phone, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.customer.phone) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.agreeTerms, {'attr': {'class': 'mx-3'}}) }}
+        {{ form_label(form.agreeTerms, 'J\'accepte le traitement de mes données personnelles') }}
+        {{ form_errors(form.agreeTerms) }}
+    </div>
+    <div class="col-12 form-group">
+        <button class="col-12 btn btn-midnight-blue  mt-2" type="submit">{{ button_label|default('Inscription') }}</button>
+        {% if is_mobile() == true %}
+            <a class="signup-link text-right display-block-override mt-1" href="{{ path('app_login') }}">Déjà un compte ? Se connecter</a>
+        {% endif %}
+    </div>
+{{ form_end(form) }}
