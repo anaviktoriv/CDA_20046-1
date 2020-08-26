@@ -9,8 +9,13 @@
 
 {% block body %}
     <div class="content-wrapper mx-auto mt-5">
-        <h1 class="title-h1-midnight-blue">Mes commandes</h1>
-
+        <section class="row mt-5  no-gutters  justify-content-center">
+            <div class="col-11 col-lg-12 no-gutters">
+                <h1 class="title-h1-midnight-blue">Mes commandes</h1>
+                <p class="title-h4-black text-left"><i class="left-yellow-arrow-icon"></i><a class="title-h4-black text-left download-bill-link" href="{{ path('app_account') }}">Mon Compte</a>
+            </div>
+        </section>
+        </p>
         {% if app.user.customer.orders.count == 0 %}
             <p class="p-black text-center"> Vous n'avez pas de commandes.</p>
         {% else %}
@@ -60,8 +65,9 @@
                             <div class="d-flex justify-content-center justify-content-lg-start align-items-center mr-lg-auto  mb-2">
                             <img class="product-image-order" src="{{ asset(orderDetail.product.photo) }}" alt="">
                             <div class="ml-2">
-                                <h3 class="p-black"> {{ orderDetail.product.title}}</h3>
-                                <p class="sandy-brown-price-order">{{ orderDetail.unitPrice}} €</p>
+                                <h3 class="p-black m-1"> {{ orderDetail.product.title}}</h3>
+                                <p class="p-black  m-1"> Quantité : {{ orderDetail.quantity}}</p>
+                                <p class="sandy-brown-price-order  m-1">{{ orderDetail.unitPrice}} €</p>
                             </div>
                             </div>
                             <button class="btn lavender-outline-return-button col-8 col-lg-2 m-2">

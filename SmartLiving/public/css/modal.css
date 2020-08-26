@@ -7,20 +7,23 @@
     min-height: 100vh;
     background-color: #CCCCF3;
 }
-.main-content-wrapper-small{
-
-}
 
 /* MODAL BODY*/
 .account-details-modal-main-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
     display: none;
+    z-index: 10;
 }
 .account-details-modal-background{
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    height: 100vh;
     background-color: rgba(204, 204, 243, 0.68);
     z-index: 10;
 }
