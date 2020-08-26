@@ -24,25 +24,6 @@ class TestController extends AbstractController {
 
 
     /**
-     * @Route("user/add", name="add_user")
-     */
-    public function add_user(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder) {
-
-        for ($i = 0; $i < 10; $i++){
-            $user = new User();
-            $user->setEmail('ana' . $i . '@example.com');
-            $user->setPassword($passwordEncoder->encodePassword($user, '123456'));
-            $user->setRegistrationDate(new \DateTime);
-            $em->persist($user);
-        }
-
-        $em->flush();
-
-        return new Response('Success');
-    }
-
-
-    /**
      * @Route("/success", name="app_success")
      */
     public function success() {

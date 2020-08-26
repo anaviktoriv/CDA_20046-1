@@ -40,28 +40,17 @@ class UserController extends AbstractController
 
         if ($this->getUser()) {
 
-                return $this->render('account/account.html.twig', [
-                    'page_title' => 'Mon Compte',
-                ]);
+            return $this->render('account/account.html.twig', [
+                'page_title' => 'Mon Compte',
+            ]);
 
         } else {
+
+            //--------------------------ELSE
+            $user = new User();
+
             $address = new Address();
             $address->setIsDefault(true);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var User $user */
-            /** @var User $address */
-            $user = $form->getData();
-            $address = $addressForm->getData();
-
-            $user->setPassword($passwordEncoder->encodePassword(
-                $user,
-                $form['plainPassword']->getData()
-            ));
-
-            if (true === $form['agreeTerms']->getData()){
-                $user->agreeTerms();
-            }
 
             $form = $this->createForm(UserType::class, $user);
             $addressForm = $this->createForm(AddressType::class, $address);
@@ -77,13 +66,8 @@ class UserController extends AbstractController
 
                 $user->setPassword($passwordEncoder->encodePassword(
                     $user,
-                    $user->getPassword()
+                    $form['plainPassword']->getData()
                 ));
-
-            $entityManager->flush();
-            $this->addFlash('success', 'You are now successfully registred!');
-            return $this->redirectToRoute('product_index');
-        }
 
                 if (true === $form['agreeTerms']->getData()) {
                     $user->agreeTerms();
@@ -108,6 +92,9 @@ class UserController extends AbstractController
                 'form' => $form->createView(),
                 'addressForm' => $addressForm->createView(),
             ]);
+
+            //-------------------------- ELSE
+
         }
     }
 
@@ -146,12 +133,10 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('user_index');
     }
 }
