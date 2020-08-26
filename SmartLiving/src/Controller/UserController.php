@@ -37,51 +37,60 @@ class UserController extends AbstractController
      */
     public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new User();
 
-        $address = new Address();
-        $address->setIsDefault(true);
+        if ($this->getUser()) {
 
-        $form = $this->createForm(UserType::class, $user);
-        $addressForm = $this->createForm(AddressType::class, $address);
+                return $this->render('account/account.html.twig', [
+                    'page_title' => 'Mon Compte',
+                ]);
 
-        $form->handleRequest($request);
-        $addressForm->handleRequest($request);
+        } else {
+            $user = new User();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var User $user */
-            /** @var User $address */
-            $user = $form->getData();
-            $address = $addressForm->getData();
+            $address = new Address();
+            $address->setIsDefault(true);
 
-            $user->setPassword($passwordEncoder->encodePassword(
-                $user,
-                $user->getPassword()
-            ));
+            $form = $this->createForm(UserType::class, $user);
+            $addressForm = $this->createForm(AddressType::class, $address);
 
-            if (true === $form['agreeTerms']->getData()){
-                $user->agreeTerms();
+            $form->handleRequest($request);
+            $addressForm->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                /** @var User $user */
+                /** @var User $address */
+                $user = $form->getData();
+                $address = $addressForm->getData();
+
+                $user->setPassword($passwordEncoder->encodePassword(
+                    $user,
+                    $user->getPassword()
+                ));
+
+                if (true === $form['agreeTerms']->getData()) {
+                    $user->agreeTerms();
+                }
+
+                $entityManager = $this->getDoctrine()->getManager();
+
+                $status = $entityManager->getRepository(Status::class)
+                    ->findOneBy(['name' => 'particulier']);
+                $user->getCustomer()->setStatus($status);
+                $user->getCustomer()->addAddress($address);
+
+                $entityManager->persist($user);
+                $entityManager->persist($address);
+
+                $entityManager->flush();
+                $this->addFlash('success', 'You are now successfully registred!');
+                return $this->redirectToRoute('user_index');
             }
 
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $status = $entityManager->getRepository(Status::class)
-                ->findOneBy(['name' => 'particulier']);
-            $user->getCustomer()->setStatus($status);
-            $user->getCustomer()->addAddress($address);
-
-            $entityManager->persist($user);
-            $entityManager->persist($address);
-
-            $entityManager->flush();
-            $this->addFlash('success', 'You are now successfully registred!');
-            return $this->redirectToRoute('user_index');
+            return $this->render('user/new.html.twig', [
+                'form' => $form->createView(),
+                'addressForm' => $addressForm->createView(),
+            ]);
         }
-
-        return $this->render('user/new.html.twig', [
-            'form' => $form->createView(),
-            'addressForm' => $addressForm->createView(),
-        ]);
     }
 
     /**
