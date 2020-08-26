@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href={{ asset('css/cart.css') }}>
+{% endblock %}
+
+{% block body %}
+    {% if false %}
+
+         <div class="cart-main">
+            <p class="cart-primary-text text-center">Mon Panier</p>
+            <div class="cart-frame-total">
+                <div class="col-12">
+                    <div class="text-center">
+                        <p class="cart-primary-text">Total HT: <span class="cart-sum-price">{{ sum }} €</span></p>
+                        <button type="button" class="btn btn-lg cart-button-validate">Valider le panier</button>
+                    </div>
+                </div>
+                {% if items | length > 0 %}
+                    {% for item in items %}
+                        <div class="row">
+                            <div class="col-4 justify-content-center">
+                                <img class="cart-image-product" src={{ asset('images/products/ps4-mobile-promo.png') }} alt="">
+                            </div>
+                            <div class="col-8">
+                                <p class="cart-text">{{ item.product.title }}<p>
+                                <form method ="post" class="form-inline" action="{{ path("cart_update") }}">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control cart-input-quantity text-center" name="id" min=0 hidden value="{{ item.product.id }}">
+                                    </div>
+                                    <div class="row">
+                                        <label for="quantity_{{ item.product.id }}" class="cart-text col-12">Quantité</label>
+                                        <input type="number" class="form-control cart-input-quantity text-center col-6" id="quantity_{{ item.product.id }}" name="quantity_{{ item.product.id }}" min=0 value="{{ item.quantity }}">
+
+                                        <button type="submit" class="btn btn-sm cart-button-update-quantity text-center col-6">Mise a jour</button>
+                                    </div>
+                                </form>
+                                <p class="cart-price-product">{{ item.product.unitPrice }} €</p>
+                            </div>
+                        </div>
+                        <hr class="cart-color-hr">
+                    {% endfor %}
+                {% else %}
+                    <p>Il y a rien !</p>
+                {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+
+    {% else %}
+
+        <div class="cart-main">
+            <p class="cart-primary-text text-center">Mon Panier</p>
+            <div class="row">
+                <div class="col-8">
+                {% if items | length > 0 %}
+                    {% for item in items %}
+                        <div class="row">
+                            <div class="col-2 justify-content-center">
+                                <img class="cart-image-product" src={{ asset('images/products/ps4-mobile-promo.png') }} alt="">
+                            </div>
+                            <div class="col-8">
+                                <p class="cart-text">{{ item.product.title }}<p>
+                                <p class="cart-price-product">{{ item.product.unitPrice }} €</p>
+                            </div>
+                            <div class="col-2">
+                                <form method ="post" class="form_quantity" action="{{ path("cart_update") }}">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control cart-input-quantity text-center" name="id" min=0 hidden value="{{ item.product.id }}">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="quantity_{{ item.product.id }}" class="cart-text">Quantité</label>
+                                        <input type="number" class="form-control cart-input-quantity text-center" id="quantity_{{ item.product.id }}" name="quantity_{{ item.product.id }}" min=0 value="{{ item.quantity }}">
+                                    </div>
+                                    <button type="submit" class="btn btn-sm cart-button-update-quantity text-center cart-send">Mise a jour</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr class="cart-color-hr">
+                    {% endfor %}
+                {% else %}
+                    <p>Il y a rien !</p>
+                {% endif %}
+                </div>
+                <div class="col-4">
+                    <div class="cart-frame-total text-center">
+                        <p class="cart-primary-text">Total HT: <span class="cart-sum-price">{{ sum }} €</span></p>
+                        <a type="button" class="btn btn-lg cart-button-validate" href="{{ path("cart_send") }}">Valider le panier</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
