@@ -2,6 +2,7 @@
 
 namespace App\Service\Cart;
 
+use App\Entity\Customer;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Entity\Product;
@@ -18,22 +19,27 @@ class CartService {
         $this->EntityManager = $em;
     }
 
+    //Methods for add product in cart
     public function add(int $id,int $quantity)
     {
         $panier = $this->session->get('panier', []);
+        $entityManager = $this -> EntityManager ;
+        $item = $entityManager -> getRepository(Product::class) -> findById($id);
 
-        $panier[$id] = isset($panier[$id]) ? $panier[$id] + $quantity : $quantity ; 
-        
+        if (!empty($item)) {
+            $panier[$id] = isset($panier[$id]) ? $panier[$id] + $quantity : $quantity ; 
+        }
+
         $this->session->set('panier', $panier);
     }
 
+    //Methods for delete or update product and quantity in cart
     public function update(int $id, int $quantity)
     {
         $panier = $this->session->get('panier',[]);
 
-        if (isset($panier[$id]))
-        {
-            if ($quantity > 0 ){
+        if (isset($panier[$id])) {
+            if ($quantity > 0 ) {
                 $panier[$id] = $quantity;
             } else {
                 unset($panier[$id]);
@@ -43,20 +49,23 @@ class CartService {
         $this->session->set('panier', $panier);
     }
 
+    //Method for send data cart in DB.
     public function send()
     {
         $cart = $this->session->get('panier',[]);
-        $entityManager = $this -> EntityManager ;
+        $entityManager = $this -> EntityManager;
 
 
         $product = new Order();
         $product -> setDate(new \DateTime());
-        $product -> setDiscount(10);
-        $product -> setTotal(12);
+        $product -> setDiscount(0); 
+        $product -> setTotal($this->getSum());
         $product -> setStatus("cart");
 
-        foreach ($cart as $item => $quantity) {
+        $userId = $entityManager -> getRepository(Customer::class) -> findById(1); //A définir
+        $product -> setCustomer($userId[0]);
 
+        foreach ($cart as $item => $quantity) {
             $orderDetail = new OrderDetails($item);
 
             $items = $entityManager -> getRepository(Product::class) -> findById($item);
@@ -74,10 +83,31 @@ class CartService {
         $this->session->set('panier', []);
     }
 
-    public function getSum($cartWithData): float
+    //Cart with data product
+    public function cartWithData()
     {
+        $cart = $this->session->get('panier',[]);
+
+        $cartWithData = [];
+
+        foreach ($cart as $id => $quantity)
+        {
+            $cartWithData[] = [
+                'product' => $this -> EntityManager-> getRepository(Product::class) -> find($id),
+                'quantity' => $quantity
+            ];
+        }
+
+        return $cartWithData;
+    }
+
+    //Sum cart
+    public function getSum(): float
+    {
+        $cartWithData = $this->cartWithData();
         $sum = 0;
 
+        //dd($cartWithData);
         foreach($cartWithData as $item) {
             $sum += $item['product']->getUnitPrice() * $item['quantity'];
         }
