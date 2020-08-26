@@ -119,7 +119,16 @@ class Order
 
     public function getStatus(): ?string
     {
-        return $this->status;
+        $statusesFrench = [
+            'cart' => 'En panier',
+            'pending' => 'En attante',
+            'paid' => 'Payé',
+            'canceled' => 'Annulé',
+            'disputed' => 'Disputed',
+            'refunded' => 'Remboursé',
+        ];
+
+        return $statusesFrench[$this->status];
     }
 
     public function setStatus(string $status): self

@@ -11,18 +11,77 @@
     <div class="content-wrapper mx-auto mt-5">
         <h1 class="title-h1-midnight-blue">Mes commandes</h1>
 
-        {# -------------  ORDERS   -------------- #}
-        <section class="row mt-5 pt-3 no-gutters justify-content-center">
-            <div class="col-11">
-                <div class="row no-gutters justify-content-left align-items-center mt-4">
-                    <div class="col-8">
-                        <h3 class="title-h3-midnight-blue">Nom :</h3>
-                        <p class="p-black"></p>
+        {% if app.user.customer.orders.count == 0 %}
+            <p class="p-black text-center"> Vous n'avez pas de commandes.</p>
+        {% else %}
+
+            {# -------------  ORDERS   -------------- #}
+            {% for order in app.user.customer.orders %}
+                <section class="row mt-5  no-gutters lavender-border-order justify-content-center">
+                    <div class="col-11 col-lg-12 no-gutters">
+
+                        {# order header #}
+                        <div class="lavender-header-order">
+                        <div class="row  no-gutters p-2 justify-content-center">
+
+                            <div class="col-11 col-lg-2 p-1 no-gutters mx-auto">
+                                <h3 class="title-h3-midnight-blue text-center text-lg-left">Commandé le :</h3>
+                                <p class="p-black mb-0 text-center text-lg-left"> {{ order.date|date('d/m/Y') }} </p>
+                            </div>
+                            <div class="col-11 col-lg-2  p-1  no-gutters">
+                                <h3 class="title-h3-midnight-blue  text-center text-lg-left">Total :</h3>
+                                <p class="p-black mb-0  text-center text-lg-left"> {{ order.total }} € </p>
+                            </div>
+                            <div class="col-11 col-lg-1  p-1  no-gutters">
+                                <h3 class="title-h3-midnight-blue  text-center text-lg-left">Etat :</h3>
+                                <p class="p-black mb-0  text-center text-lg-left"> {{ order.status }} </p>
+                            </div>
+                            <div class="col-11 col-lg-3  p-1  no-gutters">
+                                <h3 class="title-h3-midnight-blue  text-center text-lg-left">Date de livraison :</h3>
+                                {% for shipping in order.getShippings() %} <p
+                                        class="p-black mb-0  text-center text-lg-left">   {{ shipping.deliveryDate|date('d/m/Y') }} </p> {% endfor %}
+                            </div>
+                            <div class="col-11 col-lg-2  p-1  no-gutters">
+                                <h3 class="title-h3-midnight-blue  text-center text-lg-left">N° de la commande :</h3>
+                                <p class="p-black mb-0  text-center text-lg-left"> {{ order.id }} </p>
+                            </div>
+                            <div class="col-11 col-lg-2  p-1  no-gutters">
+                                <p class="text-center text-lg-left"><a class="title-h3-midnight-blue download-bill-link"
+                                            href="">Télécharger la facture</a> </p>
+                            </div>
+
+                        </div>
+                        </div>
+
+
+                        {# ----------------- PRODUCT ---------------- #}
+            {% for orderDetail in order.getOrderDetails() %}
+                        <div class="row no-gutters justify-content-center align-items-center mt-4 p-2 lavender-border-order-product">
+                            <div class="d-flex justify-content-center justify-content-lg-start align-items-center mr-lg-auto  mb-2">
+                            <img class="product-image-order" src="{{ asset(orderDetail.product.photo) }}" alt="">
+                            <div class="ml-2">
+                                <h3 class="p-black"> {{ orderDetail.product.title}}</h3>
+                                <p class="sandy-brown-price-order">{{ orderDetail.unitPrice}} €</p>
+                            </div>
+                            </div>
+                            <button class="btn lavender-outline-return-button col-8 col-lg-2 m-2">
+                                Retourner
+                            </button>
+                            <button class="btn lavender-evaluate-button  col-8 col-lg-2 m-2">
+                                Evaluer
+                            </button>
+                            <button class="btn powder-blue-buy-again-button  col-8 col-lg-2 m-2">
+                                Acheter à nouveau
+                            </button>
+                        </div>
+                        <div class="separator-lavender-account display-non-on-mobile"></div>
+
+            {% endfor %}
                     </div>
-                    <button id="modify-last-name-btn" class="col-3 btn lavender-modify-button ml-auto">Modifier</button>
-                </div>
-                <div class="separator-lavender-account"></div>
-            </div>
-        </section>
+                </section>
+            {% endfor %}
+        {% endif %}
+
     </div>
 {% endblock %}
+

@@ -1,0 +1,114 @@
+@media (min-width: 992px) {
+    .lavender-border-order {
+        border: 3px solid rgba(206, 204, 246, 1);
+        border-radius: 10px;
+    }
+}
+
+.lavender-header-order{
+    background-color: rgba(204, 204, 243, 0.75);
+    border-bottom: 3px solid rgba(206, 204, 246, 1);
+}
+
+@media (max-width: 992px) {
+    .lavender-header-order{
+        border-radius: 10px;
+        border: 3px solid rgba(206, 204, 246, 1);
+    }
+    .lavender-border-order-product {
+        border-radius: 10px;
+        border: 3px solid rgba(206, 204, 246, 1);
+    }
+
+    .display-non-on-mobile{
+        display: none;
+    }
+}
+
+.download-bill-link{
+    text-decoration: underline;
+}
+.download-bill-link:hover {
+    text-decoration: none;
+    color: #F1D23D;
+}
+.download-bill-link:active {
+    text-decoration: none;
+    color: #F1D23D;
+}
+
+
+.product-image-order{
+    max-width: 160px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px #00000029;
+}
+
+@media (max-width: 992px) {
+    .product-image-order{
+        max-width: 100px;
+    }
+}
+
+.sandy-brown-price-order{
+    color: #F1D23D;
+    text-align: left;
+    font: normal normal normal 22px Lato;
+    letter-spacing: 0;
+}
+
+/*---------------- BUTTONS -------------------*/
+
+/*  Retourner BUTTON*/
+
+.lavender-outline-return-button{
+    height:40px;
+    border: 3px solid #CCCCF3D9;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.lavender-outline-return-button:hover{
+    background-color: #F1D23D;
+    border: none;
+}
+
+.lavender-outline-return-button:active{
+    background-color: #F1D23D;
+    border: none;
+}
+
+/*  Evaluate BUTTON*/
+
+.lavender-evaluate-button{
+    height:40px;
+    background-color: #CCCCF3D9;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.lavender-evaluate-button:hover{
+    background-color: #F1D23D;
+}
+
+.lavender-evaluate-button:active{
+    background-color: #F1D23D;
+}
+
+/*  Buy again BUTTON */
+
+.powder-blue-buy-again-button{
+    height:40px;
+    background-color: #BBE4E4BF;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.powder-blue-buy-again-button:hover{
+    background-color: #F1D23D;
+}
+
+.powder-blue-buy-again-button:active{
+    background-color: #F1D23D;
+}

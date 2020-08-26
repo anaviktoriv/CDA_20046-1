@@ -142,7 +142,8 @@ class Product
 
     public function getPhoto(): ?string
     {
-        return $this->photo;
+
+        return 'images/products/' . $this->photo;
     }
 
     public function setPhoto(string $photo): self
