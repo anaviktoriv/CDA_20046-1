@@ -15,12 +15,13 @@
         {{ form_errors(form.email) }}
     </div>
     <div class="col-12 form-group">
-        {{ form_label(form.password.first, 'Entrez le mot de passe') }}
-        {{ form_widget(form.password.first, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_label(form.plainPassword.first, 'Entrez le mot de passe') }}
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.plainPassword.first) }}
     </div>
     <div class="col-12 form-group">
-        {{ form_label(form.password.second, 'Confirmer le mot de passe') }}
-        {{ form_widget(form.password.second, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe') }}
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control border-radius-10'}}) }}
     </div>
     <div class="col-12 form-group">
         {{ form_label(addressForm.address, 'Adresse') }}

@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
@@ -27,9 +29,19 @@ class UserType extends AbstractType
                     ])
                 ]
             ])
-            ->add('password', RepeatedType::class, [
-                'type'=>PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+            ->add('plainPassword',  RepeatedType::class, [
+                'type' => PasswordType::class,
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Choisissez un mot de passe'
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Le mot passe est trop court(minimum 5 caractères)'
+                    ])
+                ],
+                'invalid_message' => 'Les champs du mot de passe doivent correspondre.',
                 'first_options'  => ['label' => false],
                 'second_options' => ['label' => false],
             ])

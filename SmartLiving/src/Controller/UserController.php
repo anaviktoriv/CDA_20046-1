@@ -45,10 +45,23 @@ class UserController extends AbstractController
                 ]);
 
         } else {
-            $user = new User();
-
             $address = new Address();
             $address->setIsDefault(true);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var User $user */
+            /** @var User $address */
+            $user = $form->getData();
+            $address = $addressForm->getData();
+
+            $user->setPassword($passwordEncoder->encodePassword(
+                $user,
+                $form['plainPassword']->getData()
+            ));
+
+            if (true === $form['agreeTerms']->getData()){
+                $user->agreeTerms();
+            }
 
             $form = $this->createForm(UserType::class, $user);
             $addressForm = $this->createForm(AddressType::class, $address);
@@ -66,6 +79,11 @@ class UserController extends AbstractController
                     $user,
                     $user->getPassword()
                 ));
+
+            $entityManager->flush();
+            $this->addFlash('success', 'You are now successfully registred!');
+            return $this->redirectToRoute('product_index');
+        }
 
                 if (true === $form['agreeTerms']->getData()) {
                     $user->agreeTerms();

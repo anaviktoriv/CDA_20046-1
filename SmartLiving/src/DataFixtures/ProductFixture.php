@@ -9,6 +9,13 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProductFixture extends Fixture implements DependentFixtureInterface
 {
+    public const MACBOOK_PRODUCT_REFERENCE = 'macbook-product';
+    public const ROBOT_PRODUCT_REFERENCE = 'robot-product';
+    public const DRONE_PRODUCT_REFERENCE = 'drone-product';
+    public const SPEAKER_PRODUCT_REFERENCE = 'speaker-product';
+    public const WEBCAM_PRODUCT_REFERENCE = 'webcam-product';
+    public const AIRPODS_PRODUCT_REFERENCE = 'airpods-product';
+
     public function load(ObjectManager $manager)
     {
         $product = new Product();
@@ -24,6 +31,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::MACBOOK_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Robot Humanoïde Familial');
@@ -38,6 +46,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::ROBOT_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Drone Apollo 13');
@@ -52,6 +61,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::DRONE_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Enceinte Bluetooth Bose');
@@ -66,6 +76,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::SPEAKER_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Webcam Pavlola');
@@ -80,6 +91,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::WEBCAM_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Airpods');
@@ -94,6 +106,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setStockMin(5);
         $product->setDateAdded(new \DateTime('now'));
         $manager->persist($product);
+        $this->addReference(self::AIRPODS_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
         $product->setTitle('Apple watch');
