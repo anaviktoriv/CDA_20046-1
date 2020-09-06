@@ -104,9 +104,51 @@
     }
 }
 
+/* Paragraph MIDNIGHT BLUE SMALL */
+.p-midnight-blue{
+    text-align: left;
+    font: normal normal normal 18px Lato;
+    letter-spacing: 0;
+    color: #1E255C;
+}
+
+@media (max-width: 992px) {
+    .p-midnight-blue{
+        font-size: 16px;
+    }
+}
 
 
+/* --------------------------- FOOTER ------------------------------ */
 
+.social-link-icon{
+    width: 16px;
+    height: auto;
+}
+
+.smart-living-footer{
+    /*same width as content wrapper on all pages 1100px*/
+    max-width: 1100px;
+    border-top: 2px solid #C2C3C9;
+    margin-top: 100px;
+}
+
+.footer-ul{
+    list-style-type: none;
+}
+.a-social-links{
+    text-decoration: none;
+}
+.a-social-links:hover{
+    text-decoration: none;
+}
+.footer-legal-link{
+    color: inherit;
+}
+.footer-legal-link:hover{
+color: #F1D23D;
+    text-decoration: none;
+}
 
 /*--- Index Produit ---*/
 
