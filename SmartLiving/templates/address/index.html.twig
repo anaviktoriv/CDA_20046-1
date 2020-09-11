@@ -21,11 +21,18 @@
     {% for address in app.user.customer.addresses %}
         <div class="col-lg-4 m-3 address-card card">
             <div class="card-body">
-                <h5 class="card-title">{{ address.fullName }}</h5>
-                <p class="card-text">{{ address.isDefault ? 'Adresse de livraison' : '<br>' }}</p>
+                <div class="d-flex pb-4 justify-content-between">
+                    <h4 class="card-title mb-0 align-self-start">{{ address.fullName }}</h4>
+                    {% if address.isDefault %}
+                        <img src=" {{ asset('images/icons/check-icon.svg')}} " alt="check icon">
+                    {% endif %}
+                </div>
                 <p>{{ address.address }}<br>{{ address.zipCode }}<br>{{ address.city }}<br>{{ address.country }}</p>
                 <a href="{{ path('address_edit', {'id': address.id}) }}" class="btn address-card-button w-100 mx-auto my-2">Modifier</a>
-                <a href="{{ path('address_delete', {'id': address.id}) }}" class="btn address-card-button w-100 mx-auto my-2">Effacer</a>
+                {{ include('address/_delete_form.html.twig') }}
+                {% if address.isDefault == false %}
+                    <a href="" class="btn address-card-button w-100 mx-auto my-2">Définir par défaut</a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

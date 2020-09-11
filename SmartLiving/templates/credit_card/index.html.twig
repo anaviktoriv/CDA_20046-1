@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CreditCard index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/address.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper mx-auto mt-5">
+        <section class="row mt-5  no-gutters  justify-content-center">
+            <div class="col-11 col-lg-12 no-gutters">
+                <h1 class="title-h1-midnight-blue">Mes paiements</h1>
+                <p class="title-h4-black text-left"><i class="left-yellow-arrow-icon"></i><a class="title-h4-black text-left back-account-link" href="{{ path('app_account') }}">Mon Compte</a>
+            </div>
+        </section>
+    </div>
+    <div class="row mt-5  no-gutters lavender-border-order justify-content-center">
+        {% for credit_card in app.user.customer.creditCards %}
+            <div class="col-lg-4 m-3 address-card card">
+                <div class="card-body">
+                    <div class="d-flex pb-4">
+                        <img src=" {{ asset('images/icons/visa_icon.svg')}} " alt="visa icon">
+                        <h4 class="px-4">N°****-{{ credit_card.number|slice(12,4)}}</h4>
+                        {% if credit_card.isDefault %}
+                            <img src=" {{ asset('images/icons/check-icon.svg')}} " alt="check icon" class="ml-auto">
+                        {% endif %}
+                    </div>
+                    <h5 class="card-title mb-0">Nom:</h5>
+                    <p>{{ credit_card.cardOwnerName }}</p>
+                    <h5 class="card-title mb-0">Expire:</h5>
+                    <p class="card-text">{{ credit_card.expirationDate ? credit_card.expirationDate|date('m/Y') : ''  }}</p>
+                    <a href="{{ path('credit_card_edit', {'id': credit_card.id}) }}" class="btn address-card-button w-100 mx-auto my-2">Modifier</a>
+                    {{ include('credit_card/_delete_form.html.twig') }}
+                    {% if credit_card.isDefault == false %}
+                        <a href="" class="btn address-card-button w-100 mx-auto my-2">Définir par défaut</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <div class="row m-5">
+        <a class="col-lg-3 btn lavender-add-button mx-auto" href="{{ path('credit_card_new') }}">Ajouter une carte de crédit</a>
+    </div>
+
+{% endblock %}

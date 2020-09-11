@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une carte de crédit{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="main-content-wrapper row">
+        <div class="d-flex flex-column form-wrapper my-auto mx-auto col-10 lg-6 pl-0 pr-0">
+            <div class="account-detail-block">
+                <a href="{{ path('app_account') }}" class="close"></a>
+                <h1 class="title-h4-black margin-top-18px p-0">Ajouter une carte de crédit</h1>
+                <div class="separator-login-title"></div>
+
+                {{ include('credit_card/_form.html.twig') }}
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
