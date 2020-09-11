@@ -1,0 +1,60 @@
+/*  MODIFY BUTTON*/
+
+.lavender-add-button{
+    height:40px;
+    background-color: #CCCCF3D9;
+    border-radius: 10px;
+}
+
+.lavender-add-button:hover{
+    background-color: #F1D23D;
+}
+
+.lavender-addbutton:active{
+    background-color: #F1D23D;
+}
+
+.left-yellow-arrow-icon {
+    border: solid #F1D23D;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.back-account-link{
+    text-decoration: underline;
+}
+.back-account-link:hover {
+    text-decoration: none;
+    color: #F1D23D;
+}
+.back-account-link:active {
+    text-decoration: none;
+    color: #F1D23D;
+}
+
+.address-card {
+    max-width: 375px;
+    border: 3px solid #B0E6E6;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.address-card-button{
+    height:40px;
+    border: 3px solid #B0E6E6;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.address-card-button:hover{
+    background-color: #F1D23D;
+    border: none;
+}
+
+.address-card-button:active{
+    background-color: #F1D23D;
+    border: none;
+}

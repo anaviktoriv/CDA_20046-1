@@ -1,4 +1,25 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'row p-4'}}) }}
+    <div class="col-12 form-group">
+        {{ form_label(form.address, 'Adresse') }}
+        {{ form_widget(form.address, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.address) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.zipCode, 'Code postal') }}
+        {{ form_widget(form.zipCode, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.zipCode) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.city, 'Ville') }}
+        {{ form_widget(form.city, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.city) }}
+    </div>
+    <div class="col-12 form-group">
+        {{ form_label(form.country, 'Pays') }}
+        {{ form_widget(form.country, {'attr': {'class': 'form-control border-radius-10'}}) }}
+        {{ form_errors(form.country) }}
+    </div>
+    <div class="col-12 form-group">
+        <button class="col-12 btn btn-midnight-blue  mt-4" type="submit">{{ button_label|default('Enregistrer les modifications') }}</button>
+    </div>
 {{ form_end(form) }}

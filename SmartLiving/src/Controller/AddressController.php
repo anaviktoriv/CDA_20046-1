@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Address;
+use App\Entity\Customer;
+use App\Entity\User;
 use App\Form\AddressType;
 use App\Repository\AddressRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,11 +33,18 @@ class AddressController extends AbstractController
     public function new(Request $request): Response
     {
         $address = new Address();
+        $address->setIsDefault(false);
+        $firstname = $this->getUser()->getCustomer()->getFirstName();
+        $lastname = $this->getUser()->getCustomer()->getLastName();
+        $address->setFullName($firstname .' '. $lastname);
+        $customer = $this->getUser()->getCustomer();
+        $address->addCustomer($customer);
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($address);
             $entityManager->flush();
 
