@@ -150,8 +150,17 @@ color: #F1D23D;
     text-decoration: none;
 }
 
-/*--- Index Produit ---*/
 
+
+
+
+
+/*--- Index Product---*/
+/* limit the size of the main content*/
+
+/*.product-wrapper{*/
+/*    max-width: 1100px;*/
+/*}*/
 
 
 /*Mobile*/

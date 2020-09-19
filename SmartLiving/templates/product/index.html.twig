@@ -3,6 +3,7 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
+    <div class="product-wrapper mx-auto">
     <section class="trending mb-5">
         <p class="text-center section-title">Produits Tendances</p>
         {% if is_mobile() == true %}
@@ -907,6 +908,6 @@
             </a>
         </div>
     </section>
-
+    </div>
 {% endblock %}
 

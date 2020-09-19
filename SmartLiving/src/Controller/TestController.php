@@ -15,15 +15,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class TestController extends AbstractController {
 
     /**
-     * @Route("/", name="app_index")
-     */
-    public function index() {
-
-        return $this->render('test.html.twig');
-    }
-
-
-    /**
      * @Route("/success", name="app_success")
      */
     public function success() {

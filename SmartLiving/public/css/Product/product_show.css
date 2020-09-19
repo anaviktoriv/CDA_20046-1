@@ -1,3 +1,11 @@
+/* limit the size of the main content*/
+
+.product-wrapper{
+    max-width: 1100px;
+    background-color: yellow;
+}
+
+
 .article-title
 {
     font: normal normal bold 20px/24px Lato;
