@@ -3,7 +3,7 @@
     padding-left: 0;
     padding-right: 0;
 }
-
+/* ---------     NavBar    ------------ */
 /*---  Logo ---*/
 
 .logo-desktop{
@@ -16,6 +16,15 @@
     width: auto;
 }
 
+/*---  Search bar ---*/
+.input-group-text {
+    color: #ced4da;
+    background-color: #fff;
+    border-right: none;
+}
+.login-menu.dropdown-toggle::after {
+    content: none;
+}
 /* ---------     Titles    ------------ */
 /*TODO: Use same class for titles on all pages*/
 
@@ -228,7 +237,6 @@ color: #F1D23D;
         color: #CCCCF3;
         opacity: 1;
         margin-bottom: 0;
-        margin-left: 35px;
     }
 
     .rating-stars {
