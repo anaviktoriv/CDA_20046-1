@@ -22,13 +22,14 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 }#}
             <ul class="navbar-nav mx-auto align-items-center mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('app_index') }}"> Accueil <span class="sr-only">(current)</span></a>
+                {% set route_name = app.request.attributes.get('_route') %}
+                <li class="nav-item" >
+                    <a class="nav-link {% if route_name == 'product_index' %} active {% endif %}" href="{{ path('app_index') }}" > Accueil <span class="sr-only">(current)</span></a>
                 </li>
 
                 <!-- DROPDOWN -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Catégories </a>
+                    <a class="nav-link {% if route_name == 'category_show' %} active {% endif %} dropdown-toggle" href="#" data-toggle="dropdown">  Catégories </a>
                     {{ render(path('category_index')) }}
                 </li>
                 <li class="nav-item">
@@ -44,7 +45,7 @@
                 {% if is_granted('ROLE_USER') %}
                 {#user account drop down#}
                 <li class="nav-item dropdown">
-                    <a class="nav-link login-menu dropdown-toggle" href="#" data-toggle="dropdown"> <img src=" {{ asset('images/icons/login-yellow.svg')}} " alt="login"> </a>
+                    <a class="nav-link my-auto login-menu dropdown-toggle" href="#" data-toggle="dropdown"> <img src=" {{ asset('images/icons/login-yellow.svg')}} " alt="login"> </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href="{{ path('app_account') }}"> Mon compte </a></li>
                         <li><a class="dropdown-item" href="{{ path('app_orders') }}"> Mes commandes </a></li>
@@ -53,7 +54,7 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link navbar-icon" href="{{ path('app_login') }}"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="login"> </a>
+                    <a class="nav-link pt-0 navbar-icon" href="{{ path('app_login') }}"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="login"> </a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
