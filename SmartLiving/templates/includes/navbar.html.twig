@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand my-auto" href="#">
             {% if is_mobile() == true %}
                 <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt="logo" class="logo-desktop">
@@ -11,37 +11,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <div class="row-lg collapse navbar-collapse" id="navbarTogglerDemo02">
+                <div class="input-group input-group-sm col-lg-5">
+                    <div class="input-group-prepend">
+                        <button class="btn input-group-text" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                {#  <input class="form-control mr-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"> Accueil <span class="sr-only">(current)</span></a>
+                }#}
+            <ul class="navbar-nav mx-auto align-items-center mt-2 mt-lg-0">
+                {% set route_name = app.request.attributes.get('_route') %}
+                <li class="nav-item" >
+                    <a class="nav-link {% if route_name == 'product_index' %} active {% endif %}" href="{{ path('app_index') }}" > Accueil <span class="sr-only">(current)</span></a>
                 </li>
 
                 <!-- DROPDOWN -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Catégories </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"> Drones </a></li>
-                        <li><a class="dropdown-item" href="#"> Robots </a></li>
-                        <li><a class="dropdown-item" href="#"> Télés </a></li>
-                        <li><a class="dropdown-item" href="#"> Accesoirs </a></li>
-                        <li><a class="dropdown-item dropdown-toggle" href="#"> Ordinateurs </a>
-                            <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="">Portables</a></li>
-                                <li><a class="dropdown-item" href="">Bureaux</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item dropdown-toggle" href="#"> Home Smart Devices </a>
-                            <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="">Assistants connectés</a></li>
-                                <li><a class="dropdown-item" href="">Enceintes</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <a class="nav-link {% if route_name == 'category_show' %} active {% endif %} dropdown-toggle" href="#" data-toggle="dropdown">  Catégories </a>
+                    {{ render(path('category_index')) }}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nous Contacter</a>
@@ -51,12 +40,12 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav mt-2 mt-lg-0 ml-auto" >
+            <ul class="navbar-nav align-items-center mt-2 mt-lg-0 ml-auto" >
 
                 {% if is_granted('ROLE_USER') %}
                 {#user account drop down#}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> <img src=" {{ asset('images/icons/login-yellow.svg')}} " alt="login"> </a>
+                    <a class="nav-link my-auto login-menu dropdown-toggle" href="#" data-toggle="dropdown"> <img src=" {{ asset('images/icons/login-yellow.svg')}} " alt="login"> </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href="{{ path('app_account') }}"> Mon compte </a></li>
                         <li><a class="dropdown-item" href="{{ path('app_orders') }}"> Mes commandes </a></li>
@@ -65,11 +54,11 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link navbar-icon" href="{{ path('app_login') }}"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="login"> </a>
+                    <a class="nav-link pt-0 navbar-icon" href="{{ path('app_login') }}"> <img src=" {{ asset('images/icons/login-black.svg')}} " alt="login"> </a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link  navbar-icon" href="{{ path("cart_index") }}"> <img src=" {{ asset('images/icons/cart-black.svg')}} " alt="panier"> </a>
+                    <a class="nav-link pt-0 navbar-icon" href="{{ path("cart_index") }}"> <img src=" {{ asset('images/icons/cart-black.svg')}} " alt="panier"> </a>
                 </li>
             </ul>
         </div>

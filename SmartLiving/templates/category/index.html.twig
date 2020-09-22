@@ -1,0 +1,16 @@
+<ul class="dropdown-menu">
+    {% for category in categories %}
+        {% if category.children|length > 0 %}
+            <li><a class="dropdown-item dropdown-toggle" href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a>
+                <ul class="submenu dropdown-menu">
+                    {% for subCategory in category.children%}
+                        <li><a class="dropdown-item" href="{{ path('category_show', {'id': subCategory.id}) }}">{{ subCategory.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if (category.parent|length == 0) and (category.children|length == 0) %}
+            <li><a class="dropdown-item" href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>

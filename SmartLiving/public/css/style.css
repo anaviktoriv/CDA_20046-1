@@ -3,7 +3,7 @@
     padding-left: 0;
     padding-right: 0;
 }
-
+/* ---------     NavBar    ------------ */
 /*---  Logo ---*/
 
 .logo-desktop{
@@ -16,6 +16,41 @@
     width: auto;
 }
 
+/*---  Search bar ---*/
+.input-group-text {
+    color: #ced4da;
+    background-color: #fff;
+    border-right: none;
+}
+.login-menu.dropdown-toggle::after {
+    content: none;
+}
+.navbar-nav .nav-item .nav-link{
+    font-family: 'Lato', sans-serif;
+    color: #1E255C;
+    font-weight: bold;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    color: #F1D23D;
+}
+.navbar-nav .nav-item .nav-link.active{
+    color: #F1D23D;
+}
+.navbar-nav .nav-item .dropdown-menu .dropdown-toggle::after{
+    color: #F1D23D;
+}
+.dropdown-item:focus {
+    background:none;
+}
+@media (max-width: 1200px) {
+    .navbar-nav .nav-item .nav-link{
+        font-size: smaller;
+    }
+}
+
+.category-card {
+    max-width: 375px;
+}
 /* ---------     Titles    ------------ */
 /*TODO: Use same class for titles on all pages*/
 
@@ -228,7 +263,6 @@ color: #F1D23D;
         color: #CCCCF3;
         opacity: 1;
         margin-bottom: 0;
-        margin-left: 35px;
     }
 
     .rating-stars {
