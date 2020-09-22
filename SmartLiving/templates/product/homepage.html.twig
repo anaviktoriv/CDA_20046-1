@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/Product/homepage.css')}} ">
+{% endblock %}
+{% block body %}
+<h1 class="mt-5 mb-5 title-h1-midnight-blue">Produits Tendances</h1>
+    <div class="carousel-wrapper">
+        <button class="btn arrow left"></button>
+        <div class="carousel">
+            <div class="slider">
+                {% for product in products %}
+                <section class="product-card">
+                    <img class="product-image" src="{{ product.getPhoto }}" alt="product photo">
+                    <div class="product-info">
+                        <p class="info-detail">{{ product.getTitle }}</p>
+                        <div class="info-detail review-detail">
+                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                        </div>
+                        <p class="info-detail">{{ product.getCategory.name }}</p>
+                        <p class="info-detail text-right">{{ product.getUnitPrice }}</p>
+
+                    </div>
+                </section>
+                {% endfor %}
+            </div>
+        </div>
+        <button class="btn arrow right"></button>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset("js/Product/homepage.js") }}"></script>
+{% endblock %}
+
+{#
+<img class="carousel__photo initial" src=" {{ asset('images/products/airpods.jpg') }}">
+<img class="carousel__photo" src=" {{ asset('images/products/iphone.jpg') }}">
+<img class="carousel__photo" src=" {{ asset('images/products/imac.jpg') }}">
+<img class="carousel__photo" src="{{ asset('images/products/airpods.jpg') }}">
+<img class="carousel__photo" src="{{ asset('images/products/iphone.jpg') }}">#}

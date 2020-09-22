@@ -1,0 +1,93 @@
+
+
+.carousel-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel{
+    width: 900px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.slider {
+    height: 100%;
+    display: flex;
+    transition: all 0.3s;
+}
+
+
+/* PRODUCT CARD*/
+.product-card{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.product-image{
+    width:100%;
+    height: auto;
+    border-radius: 10px;
+}
+.product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.info-detail{
+    width: 50%;
+    flex-shrink: 0;
+}
+.review-detail{
+    display: flex;
+    justify-content: flex-end;
+}
+.review-star{
+    width: 18%;
+    margin-left: 1%;
+}
+
+
+
+/*  LEFT AND RIGHT ARROWS */
+.arrow {
+    cursor: pointer;
+    width: 45px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.btn:focus,.btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.left {
+    margin-right: 10px;
+    background-image: url("../../images/icons/arrow-left.svg");
+}
+.left:hover, .left:active {
+    background-image: url("../../images/icons/arrow-left-yellow.svg");
+}
+
+.right {
+    margin-left: 10px;
+    background-image: url("../../images/icons/arrow-right.svg");
+}
+.right:hover, .right:active{
+    background-image: url("../../images/icons/arrow-right-yellow.svg");
+}
+@media (max-width: 500px){
+    .arrow{
+        display: none;
+    }
+}
+
+
+
+
