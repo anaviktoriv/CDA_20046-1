@@ -18,7 +18,7 @@ class CustomerType extends AbstractType
                 'label'=> false,
                 'constraints'=> [
                     new Regex([
-                        'pattern' => '/^[^<>%\/\$]{1,50}$/',
+                        'pattern' => '/^[a-zA-Z -]+$/',
                         'message' => 'Nom invalide'
                     ])
                 ]
@@ -27,7 +27,7 @@ class CustomerType extends AbstractType
                 'label'=> false,
                 'constraints'=> [
                     new Regex([
-                        'pattern' => '/^[^<>%\/\$]{1,50}$/',
+                        'pattern' => '/^[a-zA-Z -]+$/',
                         'message' => 'Nom invalide'
                     ])
                 ]

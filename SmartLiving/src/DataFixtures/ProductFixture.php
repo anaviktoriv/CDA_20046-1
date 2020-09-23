@@ -15,11 +15,12 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
     public const SPEAKER_PRODUCT_REFERENCE = 'speaker-product';
     public const WEBCAM_PRODUCT_REFERENCE = 'webcam-product';
     public const AIRPODS_PRODUCT_REFERENCE = 'airpods-product';
+    public const PLAYSTATION_PRODUCT_REFERENCE = 'playstation-product';
 
     public function load(ObjectManager $manager)
     {
         $product = new Product();
-        $product->setTitle('MacBook Pro 15" Retina');
+        $product->setTitle('MacBook Pro');
         $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
         $product->setStatus('in_stock');
         $product->setPhoto('macbook-pro.jpg');
@@ -34,7 +35,21 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $this->addReference(self::MACBOOK_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
-        $product->setTitle('Robot Humanoïde Familial');
+        $product->setTitle('Mac Pro 2010');
+        $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
+        $product->setStatus('in_stock');
+        $product->setPhoto('macbook-pro2010.jpg');
+        $product->setSupplier($this->getReference(SupplierFixture::LEKA_SUPPLIER_REFERENCE));
+        $product->setCategory($this->getReference(CategoryFixture::LAPTOPS_CATEGORY_REFERENCE));
+        $product->setUnitPrice(2500.00);
+        $product->setStock(20);
+        $product->setRestockDate(new \DateTime('2021-01-01'));
+        $product->setStockMin(5);
+        $product->setDateAdded(new \DateTime('now'));
+        $manager->persist($product);
+
+        $product = new Product();
+        $product->setTitle('Robot');
         $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
         $product->setStatus('in_stock');
         $product->setPhoto('robot-maon.jpg');
@@ -64,7 +79,7 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $this->addReference(self::DRONE_PRODUCT_REFERENCE, $product);
 
         $product = new Product();
-        $product->setTitle('Enceinte Bluetooth Bose');
+        $product->setTitle('Enceinte Bose');
         $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
         $product->setStatus('in_stock');
         $product->setPhoto('enceinte-bose.jpg');
@@ -183,6 +198,35 @@ class ProductFixture extends Fixture implements DependentFixtureInterface
         $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
         $product->setStatus('in_stock');
         $product->setPhoto('speaker-ikea.jpg');
+        $product->setSupplier($this->getReference(SupplierFixture::LAUZON_SUPPLIER_REFERENCE));
+        $product->setCategory($this->getReference(CategoryFixture::SPEAKERS_CATEGORY_REFERENCE));
+        $product->setUnitPrice(29.00);
+        $product->setStock(20);
+        $product->setRestockDate(new \DateTime('2021-01-01'));
+        $product->setStockMin(5);
+        $product->setDateAdded(new \DateTime('now'));
+        $manager->persist($product);
+
+        $product = new Product();
+        $product->setTitle('Playstation 5');
+        $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
+        $product->setStatus('in_stock');
+        $product->setPhoto('ps5.jpg');
+        $product->setSupplier($this->getReference(SupplierFixture::NAGASE_SUPPLIER_REFERENCE));
+        $product->setCategory($this->getReference(CategoryFixture::GAMES_CONSOLES_CATEGORY_REFERENCE));
+        $product->setUnitPrice(499.00);
+        $product->setStock(20);
+        $product->setRestockDate(new \DateTime('2021-01-01'));
+        $product->setStockMin(5);
+        $product->setDateAdded(new \DateTime('now'));
+        $manager->persist($product);
+        $this->addReference(self::PLAYSTATION_PRODUCT_REFERENCE, $product);
+
+        $product = new Product();
+        $product->setTitle('Enceinte X');
+        $product->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh iaculis, rutrum enim in, egestas risus. Cras in congue ante. Nunc lobortis nunc eget varius venenatis.');
+        $product->setStatus('in_stock');
+        $product->setPhoto('speaker-2.jpg');
         $product->setSupplier($this->getReference(SupplierFixture::LAUZON_SUPPLIER_REFERENCE));
         $product->setCategory($this->getReference(CategoryFixture::SPEAKERS_CATEGORY_REFERENCE));
         $product->setUnitPrice(29.00);

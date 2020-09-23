@@ -85,7 +85,7 @@ class UserController extends AbstractController
 
                 $entityManager->flush();
                 $this->addFlash('success', 'You are now successfully registred!');
-                return $this->redirectToRoute('user_index');
+                return $this->redirectToRoute('app_index');
             }
 
             return $this->render('user/new.html.twig', [

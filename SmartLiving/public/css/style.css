@@ -47,7 +47,9 @@
         font-size: smaller;
     }
 }
-
+.category-products {
+    max-width: 1280px;
+}
 .category-card {
     max-width: 375px;
 }

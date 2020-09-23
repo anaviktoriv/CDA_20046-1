@@ -22,6 +22,7 @@ class CategoryFixture extends Fixture
     public const WATCHES_CATEGORY_REFERENCE = 'watches-category';
     public const TABLETS_CATEGORY_REFERENCE = 'tablets-category';
     public const MOBILES_CATEGORY_REFERENCE = 'mobiles-category';
+    public const GAMES_CONSOLES_CATEGORY_REFERENCE = 'games-consoles-category';
 
     public function load(ObjectManager $manager)
     {
@@ -32,13 +33,13 @@ class CategoryFixture extends Fixture
         $this->addReference(self::COMPUTERS_CATEGORY_REFERENCE, $category);
 
         $category = new Category();
-        $category->setName('Ordinateurs portables');
+        $category->setName('PC portables');
         $category->setParent($this->getReference(self::COMPUTERS_CATEGORY_REFERENCE));
         $manager->persist($category);
         $this->addReference(self::LAPTOPS_CATEGORY_REFERENCE, $category);
 
         $category = new Category();
-        $category->setName('Ordinateurs de bureaux');
+        $category->setName('PC de bureaux');
         $category->setParent($this->getReference(self::COMPUTERS_CATEGORY_REFERENCE));
         $manager->persist($category);
         $this->addReference(self::DESKTOPS_CATEGORY_REFERENCE, $category);
@@ -62,9 +63,10 @@ class CategoryFixture extends Fixture
         $this->addReference(self::TABLETS_CATEGORY_REFERENCE, $category);
 
         $category = new Category();
-        $category->setName('TV');
+        $category->setName('Consoles de jeux');
         $category->setParent(null);
         $manager->persist($category);
+        $this->addReference(self::GAMES_CONSOLES_CATEGORY_REFERENCE, $category);
 
         $category = new Category();
         $category->setName('Domotique');

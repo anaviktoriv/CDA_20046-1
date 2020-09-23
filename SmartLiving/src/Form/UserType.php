@@ -33,6 +33,10 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'constraints' => [
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z0-9]+$/',
+                        'message' => 'Le mot de passe ne doit contenir que des lettre ou des chiffres.'
+                    ]),
                     new NotBlank([
                         'message' => 'Choisissez un mot de passe'
                     ]),
