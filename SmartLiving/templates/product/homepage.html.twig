@@ -7,32 +7,104 @@
 {% endblock %}
 {% block body %}
 <h1 class="mt-5 mb-5 title-h1-midnight-blue">Produits Tendances</h1>
-    <div class="carousel-wrapper">
-        <button class="btn arrow left"></button>
-        <div class="carousel">
-            <div class="slider">
-                {% for product in products %}
+<div class="carousel-wrapper">
+    <button class="btn arrow left"></button>
+    <div class="carousel">
+        <div class="slider">
+            {# TODO: Implement code to display only recently bestselling products #}
+            {% for product in products %}
                 <section class="product-card">
-                    <img class="product-image" src="{{ product.getPhoto }}" alt="product photo">
-                    <div class="product-info">
-                        <p class="info-detail">{{ product.getTitle }}</p>
-                        <div class="info-detail review-detail">
+                    <img id="product-image-homepage" class="product-image mb-2" src="{{ product.getPhoto }}" alt="product photo">
+                    <div class="info-detail">
+                        <p class="product-title ml-0">{{ product.getTitle }}</p>
+                        <div class="review-detail">
                             <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
                             <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
                             <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
                             <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
                             <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
                         </div>
-                        <p class="info-detail">{{ product.getCategory.name }}</p>
-                        <p class="info-detail text-right">{{ product.getUnitPrice }}</p>
-
                     </div>
+
+                    <div  class="info-detail">
+                        <p class="product-category ">{{ product.getCategory.name }}</p>
+                        <p class="text-right product-price mt-auto">{{ product.getUnitPrice }} € </p>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-2 w-100">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </button>
                 </section>
-                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <button class="btn arrow right"></button>
+</div>
+
+
+{# TODO: Implement logic for multiple images + discount in db #}
+<div class="limited-offer-wrapper mx-auto mt-5">
+    <img class="promo-image" src="{{ asset('images/products/ps4-mobile-promo@2x.png')}}" alt="promo img">
+    <div class="limited-offer-info-wrapper">
+        <p class="title-h3-midnight-blue mt-3 text-center limited-offer-label mx-auto pt-2 pb-2 ml-lg-0">Offre Limité</p>
+        <h2 class="title-h1-midnight-blue text-center text-lg-left">Nouvelle PS6</h2>
+        <p class="limited-offer-content p-black  text-center text-lg-left">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id semper nisl.
+            Donec efficitur quis nibh et blandit. Aenean at elit enim. Vestibulum tristique porta ex a
+            imperdiet.
+        </p>
+        <div class="price-wrapper">
+            <p class="mr-3 new-price">300 €</p>
+            <p class="old-price">2 500 €</p>
+        </div>
+        <button type="button" class="btn btn-primary mt-2 w-100">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </button>
+    </div>
+</div>
+
+{# New arrivals ... #}
+
+
+<div class="three-section-product-mini-wrapper mt-5">
+    <section class="section-product-mini">
+        <h2 class="section-product-mini-title"> Les plus vendus</h2>
+        {% for product in products | slice (3, 4) %}
+        <div class="product-mini-card-wrapper">
+            <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
+            <div class="product-mini-info-wrapper">
+                <h4 class="product-mini-title">{{ product.getTitle }}</h4>
+                <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
             </div>
         </div>
-        <button class="btn arrow right"></button>
-    </div>
+        {% endfor %}
+        <p class="product-mini-section-see-more">...</p>
+        <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
+    </section>
+    <section class="section-product-mini">
+        <h2 class="section-product-mini-title"> Les plus vendus</h2>
+        {% for product in products | slice (2, 4)%}
+            <div class="product-mini-card-wrapper">
+                <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
+                <div class="product-mini-info-wrapper">
+                    <h4 class="product-mini-title">{{ product.getTitle }}</h4>
+                    <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
+                </div>
+            </div>
+        {% endfor %}
+        <p class="product-mini-section-see-more">...</p>
+        <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
+    </section>
+    <section class="section-product-mini">
+        <h2 class="section-product-mini-title"> Les plus vendus</h2>
+        {% for product in products | slice (0, 4) %}
+            <div class="product-mini-card-wrapper">
+                <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
+                <div class="product-mini-info-wrapper">
+                    <h4 class="product-mini-title">{{ product.getTitle }}</h4>
+                    <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
+                </div>
+            </div>
+        {% endfor %}
+        <p class="product-mini-section-see-more">...</p>
+        <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
+    </section>
+</div>
 
 
 {% endblock %}
@@ -42,9 +114,3 @@
     <script src="{{ asset("js/Product/homepage.js") }}"></script>
 {% endblock %}
 
-{#
-<img class="carousel__photo initial" src=" {{ asset('images/products/airpods.jpg') }}">
-<img class="carousel__photo" src=" {{ asset('images/products/iphone.jpg') }}">
-<img class="carousel__photo" src=" {{ asset('images/products/imac.jpg') }}">
-<img class="carousel__photo" src="{{ asset('images/products/airpods.jpg') }}">
-<img class="carousel__photo" src="{{ asset('images/products/iphone.jpg') }}">#}

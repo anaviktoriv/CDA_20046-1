@@ -201,7 +201,7 @@ color: #F1D23D;
 /*Mobile*/
 @media (max-width: 992px) {
     /*trending*/
-    .section-title {
+   .section-title {
         font-family: 'Roboto Bold', sans-serif;
         font-size: 24px;
         font-weight: bolder;
@@ -247,17 +247,7 @@ color: #F1D23D;
     .carousel-control-next {
         right: 10px;
     }
-
-    .product-title {
-        font-family: 'Lato', sans-serif;
-        font-size: 14px;
-        color: #1E255C;
-        opacity: 1;
-        margin-bottom: 0;
-        margin-left: 5px;
-    }
-
-    .product-category {
+        .product-category {
         font-family: 'Lato', sans-serif;
         font-size: 13px;
         color: #CCCCF3;
@@ -276,6 +266,37 @@ color: #F1D23D;
         margin-left: 30px;
     }
 
+        .product-category {
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+        color: #CCCCF3;
+        opacity: 1;
+        margin-bottom: 0;
+    }
+
+    .rating-stars {
+        width: 18px;
+        color: #F1D23D;
+        opacity: 1;
+        margin: 0;
+    }
+
+    .rating-stars-position {
+        margin-left: 30px;
+    }
+
+
+    .product-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        color: #1E255C;
+        opacity: 1;
+        margin-bottom: 0;
+        margin-left: 5px;
+    }
+
+
+
     .product-price {
         font-family: 'Lato', sans-serif;
         font-size: 18px;
@@ -284,6 +305,8 @@ color: #F1D23D;
         margin-bottom: 0;
     }
 
+
+/* ADD PRODUCT TO CART BUTTON */
     .btn-primary {
         background-color: #BBE4E4;
         border: 0;
@@ -419,7 +442,7 @@ color: #F1D23D;
 
     .product-title {
         font-family: 'Lato', sans-serif;
-        font-size: 20px;
+        font-size: 18px;
         color: #1E255C;
         opacity: 1;
         margin-bottom: 0;
@@ -427,14 +450,15 @@ color: #F1D23D;
 
     .product-category {
         font-family: 'Lato', sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         color: #CCCCF3;
         opacity: 1;
         margin-bottom: 0;
     }
 
     .rating-stars {
-        /*width: 25px;*/
+        width: 20px;
+        height: 20px;
         color: #F1D23D;
         opacity: 1;
         margin: 0;
@@ -453,7 +477,6 @@ color: #F1D23D;
         border: 0;
         color: black;
         border-radius: 8px 8px 8px 8px;
-        width: 375px;
         height: 39px;
         font-family: 'Lato', sans-serif;
         font-size: 13px;
