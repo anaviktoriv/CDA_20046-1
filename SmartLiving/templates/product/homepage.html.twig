@@ -30,7 +30,7 @@
                         <p class="product-category ">{{ product.getCategory.name }}</p>
                         <p class="text-right product-price mt-auto">{{ product.getUnitPrice }} € </p>
                     </div>
-                    <button type="button" class="btn btn-primary mt-2 w-100">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </button>
+                    <a type="button" class="btn btn-primary mt-2 w-100" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </a>
                 </section>
             {% endfor %}
         </div>

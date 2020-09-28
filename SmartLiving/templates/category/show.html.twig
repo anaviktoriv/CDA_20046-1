@@ -48,9 +48,9 @@
                                 <p class="product-price text-right">{{ product.unitPrice }}</p>
                             </div>
                             <div class="col-12 ">
-                                <button type="button" class="btn btn-primary w-100 mt-2">Ajouter au panier<img
+                                <a type="button" class="btn btn-primary w-100 mt-2" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier<img
                                             src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon">
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -88,9 +88,9 @@
                                 <p class="product-price text-right">{{ product.unitPrice }}</p>
                             </div>
                             <div class="col-12 ">
-                                <button type="button" class="btn btn-primary w-100 mt-2">Ajouter au panier<img
+                                <a type="button" class="btn btn-primary w-100 mt-2" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier<img
                                             src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon">
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
