@@ -8,15 +8,18 @@ use App\Entity\OrderDetails;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Security;
 
 class CartService {
 
     protected $session;
+    protected $security;
 
-    public function __construct(SessionInterface $session, EntityManagerInterface $em)
+    public function __construct(SessionInterface $session, EntityManagerInterface $em, Security $security)
     {
         $this->session = $session;
         $this->EntityManager = $em;
+        $this->security = $security;
     }
 
     //Methods for add product in cart
@@ -62,8 +65,7 @@ class CartService {
         $product -> setTotal($this->getSum());
         $product -> setStatus("cart");
 
-        $userId = $entityManager -> getRepository(Customer::class) -> findById(1); //A définir
-        $product -> setCustomer($userId[0]);
+        $product -> setCustomer($this->security->getUser()-> getCustomer());
 
         foreach ($cart as $item => $quantity) {
             $orderDetail = new OrderDetails($item);
@@ -80,20 +82,20 @@ class CartService {
         $entityManager->persist($product);
         $entityManager->flush();
 
-        $this->session->set('panier', []);
+        $this -> session -> set('panier', []);
     }
 
     //Cart with data product
     public function cartWithData()
     {
-        $cart = $this->session->get('panier',[]);
+        $cart = $this -> session -> get('panier',[]);
 
         $cartWithData = [];
 
         foreach ($cart as $id => $quantity)
         {
             $cartWithData[] = [
-                'product' => $this -> EntityManager-> getRepository(Product::class) -> find($id),
+                'product' => $this -> EntityManager -> getRepository(Product::class) -> find($id),
                 'quantity' => $quantity
             ];
         }
@@ -104,7 +106,7 @@ class CartService {
     //Sum cart
     public function getSum(): float
     {
-        $cartWithData = $this->cartWithData();
+        $cartWithData = $this -> cartWithData();
         $sum = 0;
 
         //dd($cartWithData);
