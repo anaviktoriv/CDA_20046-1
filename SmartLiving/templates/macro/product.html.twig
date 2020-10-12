@@ -1,0 +1,33 @@
+{% macro card(id, title, photo, categoryName, unitPrice) %}
+    <section class="product-card">
+        <a href="{{ path('product_show', {'id': id}) }}">
+            <img id="product-image-homepage" class="product-image mb-2" src="{{ asset(photo) }}" alt="Photo du produit {{ title }}">
+        </a>
+        <div class="info-detail">
+            <p class="product-title ml-0">{{ title }}</p>
+            <div class="review-detail">
+                <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+                <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
+            </div>
+        </div>
+
+        <div  class="info-detail">
+            <p class="product-category ">{{ categoryName }}</p>
+            <p class="text-right product-price mt-auto">{{ unitPrice }} € </p>
+        </div>
+        <a type="button" class="btn btn-primary mt-2 w-100" href="{{ path("cart_add" ,{'id': id, 'quantity': 1})}}">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </a>
+    </section>
+{% endmacro %}
+
+{% macro miniCard( photo, title, unitPrice) %}
+    <div class="product-mini-card-wrapper">
+        <img class="product-mini-image" alt="product image" src="{{ asset(photo) }}">
+        <div class="product-mini-info-wrapper">
+            <h4 class="product-mini-title">{{ title }}</h4>
+            <p class="product-mini-price">{{ unitPrice }} €</p>
+        </div>
+    </div>
+{% endmacro %}

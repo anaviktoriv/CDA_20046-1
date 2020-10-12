@@ -1,3 +1,4 @@
+{% import "macro/product.html.twig" as productTemplate %}
 {% extends 'base.html.twig' %}
 
 {% block title %}Category{% endblock %}
@@ -5,6 +6,8 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+    {# Use CSS for macro#}
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/Product/homepage.css')}} ">
 {% endblock %}
 
 {% block body %}
@@ -19,83 +22,13 @@
     {% if subCategories %}
         {% for subCat in subCategories %}
             {% for product in subCat.products %}
-                <div class="col-sm-6 col-lg-4 category-card card border-0">
-                    <div class="card-body">
-                        <a href="{{ path('product_show', {'id': product.id}) }}">
-                            <img src="{{ asset(product.photo) }}"
-                                 class="rounded w-100 w-md-100 mb-3" alt="...">
-                        </a>
-                        <div class="row product-infos d-flex justify-content-between">
-                            <div class="col-6">
-                                <p class="product-title ">{{ product.title }}</p>
-                            </div>
-                            <div class="col-6 ratings d-flex justify-content-end">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars rating-stars-position">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                            </div>
-                            <div class="col-7">
-                                <p class="product-category ">{{ product.category.name }}</p>
-                            </div>
-                            <div class="col-5">
-                                <p class="product-price text-right">{{ product.unitPrice }}</p>
-                            </div>
-                            <div class="col-12 ">
-                                <a type="button" class="btn btn-primary w-100 mt-2" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier<img
-                                            src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{ productTemplate.card(product.id, product.getTitle, product.getPhoto, product.getCategory.name, product.getUnitPrice) }}
             {% endfor %}
         {% endfor %}
-        {% else %}
-            {% for product in products %}
-                <div class="col-sm-6 col-lg-4 category-card card border-0">
-                    <div class="card-body">
-                        <a href="{{ path('product_show', {'id': product.id}) }}">
-                            <img src="{{ asset(product.photo) }}"
-                                 class="rounded w-100 w-md-100 mb-3" alt="...">
-                        </a>
-                        <div class="row product-infos d-flex justify-content-between">
-                            <div class="col-6">
-                                <p class="product-title ">{{ product.title }}</p>
-                            </div>
-                            <div class="col-6 ratings d-flex justify-content-end">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars rating-stars-position">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                                <img src="{{ asset('images/icons/star_ratings_full.svg') }}" alt=""
-                                     class="rating-stars">
-                            </div>
-                            <div class="col-7">
-                                <p class="product-category ">{{ product.category.name }}</p>
-                            </div>
-                            <div class="col-5">
-                                <p class="product-price text-right">{{ product.unitPrice }}</p>
-                            </div>
-                            <div class="col-12 ">
-                                <a type="button" class="btn btn-primary w-100 mt-2" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier<img
-                                            src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+    {% else %}
+        {% for product in products %}
+            {{ productTemplate.card(product.id, product.getTitle, product.getPhoto, product.getCategory.name, product.getUnitPrice) }}
+        {% endfor %}
     {% endif %}
 </div>
 {% endblock %}

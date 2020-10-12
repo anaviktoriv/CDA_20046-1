@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{# Import macro for template card product #}
+{% import "macro/product.html.twig" as templateProduct %}
+
 {% block title %}Accueil{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -13,25 +16,8 @@
         <div class="slider">
             {# TODO: Implement code to display only recently bestselling products #}
             {% for product in products %}
-                <section class="product-card">
-                    <img id="product-image-homepage" class="product-image mb-2" src="{{ product.getPhoto }}" alt="product photo">
-                    <div class="info-detail">
-                        <p class="product-title ml-0">{{ product.getTitle }}</p>
-                        <div class="review-detail">
-                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
-                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
-                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
-                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
-                            <img class="review-star" src="{{ asset('images/icons/star_ratings_full.svg')}}">
-                        </div>
-                    </div>
-
-                    <div  class="info-detail">
-                        <p class="product-category ">{{ product.getCategory.name }}</p>
-                        <p class="text-right product-price mt-auto">{{ product.getUnitPrice }} € </p>
-                    </div>
-                    <a type="button" class="btn btn-primary mt-2 w-100" href="{{ path("cart_add" ,{'id': product.id, 'quantity': 1})}}">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </a>
-                </section>
+                {# Use macro #}
+                {{ templateProduct.card(product.id, product.getTitle, product.getPhoto, product.getCategory.name, product.getUnitPrice ) }}
             {% endfor %}
         </div>
     </div>
@@ -65,13 +51,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (3, 4) %}
-        <div class="product-mini-card-wrapper">
-            <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
-            <div class="product-mini-info-wrapper">
-                <h4 class="product-mini-title">{{ product.getTitle }}</h4>
-                <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
-            </div>
-        </div>
+            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
@@ -79,13 +59,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (2, 4)%}
-            <div class="product-mini-card-wrapper">
-                <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
-                <div class="product-mini-info-wrapper">
-                    <h4 class="product-mini-title">{{ product.getTitle }}</h4>
-                    <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
-                </div>
-            </div>
+            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
@@ -93,13 +67,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (0, 4) %}
-            <div class="product-mini-card-wrapper">
-                <img class="product-mini-image" alt="product image" src="{{product.getPhoto}}">
-                <div class="product-mini-info-wrapper">
-                    <h4 class="product-mini-title">{{ product.getTitle }}</h4>
-                    <p class="product-mini-price">{{ product.getUnitPrice }} €</p>
-                </div>
-            </div>
+            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
