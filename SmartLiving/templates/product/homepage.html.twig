@@ -51,7 +51,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (3, 4) %}
-            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
+            {{ templateProduct.miniCard( product.getId, product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
@@ -59,7 +59,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (2, 4)%}
-            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
+            {{ templateProduct.miniCard( product.getId, product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>
@@ -67,7 +67,7 @@
     <section class="section-product-mini">
         <h2 class="section-product-mini-title"> Les plus vendus</h2>
         {% for product in products | slice (0, 4) %}
-            {{ templateProduct.miniCard(product.getPhoto, product.getTitle, product.getUnitPrice) }}
+            {{ templateProduct.miniCard( product.getId, product.getPhoto, product.getTitle, product.getUnitPrice) }}
         {% endfor %}
         <p class="product-mini-section-see-more">...</p>
         <a class="product-mini-section-see-more">Voir plus<i class="right-blue-arrow-icon"></i></a>

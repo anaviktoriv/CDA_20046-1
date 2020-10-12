@@ -1,7 +1,7 @@
 {% macro card(id, title, photo, categoryName, unitPrice) %}
     <section class="product-card">
         <a href="{{ path('product_show', {'id': id}) }}">
-            <img id="product-image-homepage" class="product-image mb-2" src="{{ asset(photo) }}" alt="Photo du produit {{ title }}">
+            <img id="product-image-homepage" class="product-image mb-2" src="{{ asset(photo) }}" alt="Photo du produit : {{ title }}">
         </a>
         <div class="info-detail">
             <p class="product-title ml-0">{{ title }}</p>
@@ -22,9 +22,11 @@
     </section>
 {% endmacro %}
 
-{% macro miniCard( photo, title, unitPrice) %}
+{% macro miniCard( id, photo, title, unitPrice) %}
     <div class="product-mini-card-wrapper">
-        <img class="product-mini-image" alt="product image" src="{{ asset(photo) }}">
+        <a href="{{ path('product_show', {'id': id}) }}">
+            <img class="product-mini-image" alt="Photo du produit : {{ title }}" src="{{ asset(photo) }}">
+        </a>
         <div class="product-mini-info-wrapper">
             <h4 class="product-mini-title">{{ title }}</h4>
             <p class="product-mini-price">{{ unitPrice }} €</p>
