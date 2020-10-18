@@ -26,9 +26,12 @@ class CartController extends AbstractController
     }
 
     /**
-    * @Route("/add/{id}/{quantity}", name="cart_add", methods={"GET"})
+    * @Route("/add", name="cart_add", methods={"POST"})
     */
-    public function add($id, $quantity, CartService $cartService) {   
+    public function addPost(Request $request, CartService $cartService) {
+        $id = $request->request->get('id');
+        $quantity = $request->request->get('quantity');
+
         $cartService->add($id, $quantity);
 
         return $this->redirectToRoute('cart_index');

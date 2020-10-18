@@ -133,19 +133,25 @@
                                             <img class="rating-stars mx-0"
                                                  src="{{ asset('images/icons/star_ratings_full.svg') }}">
                                         </div>
-                                        <p class="product-price mt-4 text-left article-title">{{ product.unitPrice }}</p>
+                                        <p class="product-price mt-4 text-left article-title">{{ product.unitPrice }} €</p>
                                     </div>
                                     <div class="p-1 mt-4">
                                         <p class="text-center text-show">60 Avis</p>
-                                        <input type="number" min="1" max="10" value="1"
-                                               class="form-control mt-4 text-center quantity-selector">
+                                        <form id="sl-detail-quantity" method="POST" action="{{ path("cart_add") }}">
+                                            <div class="form-group">
+                                                <input type="number" name="id" min=0 hidden value="{{ product.id }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" name="quantity" min=1 max=10 value=1 class="form-control mt-4 text-center quantity-selector px-1">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row  m-0">
                                 <div class="col-12 p-0 mx-5">
-                                    <button class="btn btn-lg btn-addtocart mx-4 btn-primary">Ajouter au panier<img
+                                    <button type="submit" form="sl-detail-quantity" class="btn btn-lg btn-addtocart mx-4 btn-primary">Ajouter au panier<img
                                                 src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon">
                                     </button>
                                 </div>

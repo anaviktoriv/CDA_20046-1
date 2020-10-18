@@ -18,7 +18,11 @@
             <p class="product-category ">{{ categoryName }}</p>
             <p class="text-right product-price mt-auto">{{ unitPrice }} € </p>
         </div>
-        <a type="button" class="btn btn-primary mt-2 w-100" href="{{ path("cart_add" ,{'id': id, 'quantity': 1})}}">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </a>
+        <form action="{{ path("cart_add") }}" method="POST">
+            <input name="id" value={{id}} hidden>
+            <input name="quantity" value=1 hidden>
+            <button type="submit" class="btn btn-primary mt-2 w-100">Ajouter au panier <img src="{{ asset('images/icons/cart_icon.svg') }}" class="cart-icon"> </button>
+        </form>       
     </section>
 {% endmacro %}
 
