@@ -1,11 +1,19 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand my-auto" href="#">
-            {% if is_mobile() == true %}
-                <img src=" {{ asset('images/icons/logo-mobile.svg')}} " alt="logo" class="logo-desktop">
-            {% else %}
-                <img src=" {{ asset('images/icons/logo-desktop.svg')}} " alt="logo" class="logo-mobile">
-            {% endif %}
+        <a class="navbar-brand my-auto" href="{{ path("product_index") }}">
+            <picture>
+                <source 
+                    srcset="{{ asset('images/icons/logo-desktop.svg') }}"
+                    media="(min-width: 992px)"
+                    class="logo-mobile"
+                    alt="logo"
+                >
+                <img 
+                    src="{{ asset('images/icons/logo-mobile.svg') }}"
+                    alt="logo"
+                    class="logo-desktop"
+                />
+            </picture>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
