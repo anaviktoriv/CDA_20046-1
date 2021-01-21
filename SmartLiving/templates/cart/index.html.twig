@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="cart-main">
+    <div class="cart-main mx-auto">
         <p class="cart-primary-text text-center">Mon Panier</p>
         <div class="row cart-main-products">
             <div class="col-lg col-12">
@@ -56,7 +56,7 @@
         <div class="col-lg-auto col-12 order-lg-last order-first">
             <div class="cart-frame-total text-center px-4 py-3">
                 <p class="cart-primary-text">Total HT: <span class="cart-sum-price ml-2">{{ sum }} €</span></p>
-                <a type="button" class="btn btn-lg cart-button-validate p-4" href="{{ is_granted('ROLE_USER') ? path("cart_send") : path("app_login") }}">Valider le panier</a>
+                <a type="button" class="btn btn-lg cart-button-validate p-4 text-nowrap" href="{{ is_granted('ROLE_USER') ? path("cart_send") : path("app_login") }}">Valider le panier</a>
             </div>
         </div>
     </div>
