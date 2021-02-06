@@ -1,0 +1,36 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+    db:
+        image: mysql:5
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: smartlife_db
+            MYSQL_USER: anastasia
+            MYSQL_PASSWORD: 1234567
+        #volumes: 
+        #    - ./docker/mysql/.:/var/lib/mysql #Possibilité d'avoir une base de données persistant hors container
+    php:
+        build:
+            context: ../
+            dockerfile: ./Docker_SmartLiving/docker/Dockerfile
+        volumes:
+            - /code/migrations #Refuse le dossier migrations
+            - /code/var #Refuse le dossier var
+            - /code/vendor #Refuse le dossier vendor
+            - ../SmartLiving/:/code:cached #Prend tout les fichier de SmartLiving
+    nginx:
+        image: nginx:stable-alpine
+        volumes_from:
+            - php
+        volumes:
+            - ./docker/site.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - 8080:80
+        links:
+            - php
+
