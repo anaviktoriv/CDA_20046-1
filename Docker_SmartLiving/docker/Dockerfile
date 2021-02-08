@@ -3,7 +3,7 @@ FROM php:7.4-fpm-alpine
 #RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh --output /usr/bin/wait-for-it
 #RUN chmod +x /usr/bin/wait-for-it
 
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql opcache
 RUN apk update && apk add --no-cache git unzip bash
 
 WORKDIR /code
