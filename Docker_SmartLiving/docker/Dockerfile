@@ -1,3 +1,7 @@
+# SmartLiving
+#
+# VERSION               0.1
+
 FROM php:7.4-fpm-alpine
 
 #RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh --output /usr/bin/wait-for-it
