@@ -1,7 +1,7 @@
 # SmartLife  
 **Description :**  
   
-SmartLife est un site de e-commerce. C'est un projet collectif créé pendant la formation Concepteur Développeur d'Applications. 
+SmartLife est un site de e-commerce. J'ai travaillé sur ce projet collectif pendant la formation Concepteur Développeur d'Applications. 
 Au debut de la création de ce projet, nous avont conçu de la base de donné en adoptant la mèthode Merise. Nous avont également utilisé l'UML et les diagrammes. La partie development s'effectuait avec Symfony.   
   
 **Mes tâches :** 
