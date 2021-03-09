@@ -2,7 +2,7 @@
 **Description :**  
   
 SmartLife est un site de e-commerce. J'ai travaillé sur ce projet collectif pendant la formation Concepteur Développeur d'Applications. 
-Au debut de la création de ce projet, nous avont conçu de la base de donné en adoptant la mèthode Merise. Nous avont également utilisé l'UML et les diagrammes. La partie development s'effectuait avec Symfony.   
+Au début de la création de ce projet, nous avons conçu la base de données en adoptant la méthode Merise. Nous avons également utilisé l'UML et les diagrammes. La partie développement s'effectuait avec Symfony.   
   
 **Mes tâches :** 
 - participation à la création du schéma de base de données ( travail en group )
