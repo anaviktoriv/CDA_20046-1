@@ -5,13 +5,13 @@ SmartLife est un site de e-commerce. J'ai travaillé sur ce projet collectif pen
 Au début de la création de ce projet, nous avons conçu la base de données en adoptant la méthode Merise. Nous avons également utilisé l'UML et les diagrammes. La partie développement s'effectuait avec Symfony.   
   
 **Mes tâches :** 
-- participation à la création du schéma de base de données ( travail en group )
-- creation de diagramme de classe
-- creation du logo (Adobe Illustrator) et choix de la palette
-- creation de la maquette desktop et mobile (Adobe XD)
-- mise en place de la base de donne avec ORM Doctrine (à deux)
-- intergation d'interfaces page d'accuiel, page mon compte, page connexion
-- mise un place du fonctionalité authentification, changement des details du compte, affichage de produit sur la page d'acceuil
+- participation à la création du schéma de la base de données (travail en groupe)
+- création du diagramme de classes
+- création du logo (Adobe Illustrator) et choix de la palette
+- création de la maquette desktop et mobile (Adobe XD)
+- mise en place de la base de données avec l'ORM Doctrine (en binôme)
+- integration d'interfaces : page d'accueil, page mon compte, page connexion
+- mise en place des fonctionnalités : authentification, changement des informations du compte, affichage du produit sur la page d'accueil
 
 **Liens :**  
   
