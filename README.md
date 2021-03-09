@@ -10,7 +10,7 @@ Au début de la création de ce projet, nous avons conçu la base de données en
 - création du logo (Adobe Illustrator) et choix de la palette
 - création de la maquette desktop et mobile (Adobe XD)
 - mise en place de la base de données avec l'ORM Doctrine (en binôme)
-- integration d'interfaces : page d'accueil, page mon compte, page connexion
+- intégration d'interfaces : page d'accueil, page mon compte, page connexion
 - mise en place des fonctionnalités : authentification, changement des informations du compte, affichage du produit sur la page d'accueil
 
 **Liens :**  
